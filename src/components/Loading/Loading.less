@@ -1,0 +1,59 @@
+.infinite_scroll_loader{
+    cursor: pointer;
+    .bg{
+        background-color: #edeef1;
+        height: 40px;
+        text-align: center;
+        .lyby_500px_load{
+            display: inline-block;
+            margin: 12px 0;
+            width: 32px;
+            height: 16px;
+            background: url("//500px.me/images/loading-500.png") center top no-repeat;
+            -webkit-animation: animate_infinity 2s steps(60) infinite;
+            -moz-animation: animate_infinity 2s steps(60) infinite;
+            -ms-animation: animate_infinity 2s steps(60) infinite;
+            animation: animate_infinity 2s steps(60) infinite;
+        }
+    }
+}
+
+@-webkit-keyframes animate_infinity {
+    from {
+        background-position: center 0
+    }
+
+    to {
+        background-position: center -960px
+    }
+}
+
+@-moz-keyframes animate_infinity {
+    from {
+        background-position: center 0
+    }
+
+    to {
+        background-position: center -960px
+    }
+}
+
+@-ms-keyframes animate_infinity {
+    from {
+        background-position: center 0
+    }
+
+    to {
+        background-position: center -960px
+    }
+}
+
+@keyframes animate_infinity {
+    from {
+        background-position: center 0
+    }
+
+    to {
+        background-position: center -960px
+    }
+}

@@ -1,0 +1,93 @@
+@import "../../../less_develop/common";
+
+@fsn: @fontSizeNum;
+body {
+  background-color: #000;
+}
+
+/* jssor slider bullet navigator skin 13 css */
+/*
+.jssorb13 div           (normal)
+.jssorb13 div:hover     (normal mouseover)
+.jssorb13 .av           (active)
+.jssorb13 .av:hover     (active mouseover)
+.jssorb13 .dn           (mousedown)
+*/
+//.jssorb13 {
+//  position: absolute;
+//}
+//.jssorb13 div, .jssorb13 div:hover, .jssorb13 .av {
+//  position: absolute;
+//  /* size of bullet elment */
+//  width: 21px;
+//  height: 21px;
+//  background: url('img/b13.png') no-repeat;
+//  overflow: hidden;
+//  cursor: pointer;
+//}
+//.jssorb13 div { background-position: -5px -5px; }
+//.jssorb13 div:hover, .jssorb13 .av:hover { background-position: -35px -5px; }
+//.jssorb13 .av { background-position: -65px -5px; }
+//.jssorb13 .dn, .jssorb13 .dn:hover { background-position: -95px -5px; }
+
+.silder_header{
+  width : 100%;
+  background: -webkit-gradient(linear,left bottom,left top,from(rgba(0,0,0,0)),to(rgba(0,0,0,.6)));
+  background: -webkit-linear-gradient(bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.6) 100%);
+  background: -moz-linear-gradient(bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.6) 100%);
+  background: linear-gradient(to top,rgba(0,0,0,0) 0,rgba(0,0,0,.6) 100%);
+  z-index:99999;
+  position: fixed;
+  top : 0;
+  padding : 20px 0 0 50px;
+  > div{
+    float : left;
+  }
+  .logo{
+    margin-right : 30px;
+  }
+  .title{
+    h1{
+      font-size : 30px;
+      color : #e4007f;
+    }
+  }
+}
+.silder_footer{
+  width : 100%;
+  background: -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,0)),to(rgba(0,0,0,.6)));
+  background: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,.6) 100%);
+  background: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,.6) 100%);
+  background: linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.6) 100%);
+  z-index:99999;
+  position: fixed;
+  bottom : 0;
+  padding : 0px 0 20px 50px;
+  color : #FFF;
+  > div{
+    float : left;
+  }
+  .avatar{
+    .lyby_avatar(68px);
+    margin-right : 20px;
+  }
+  .title{
+    border-right : 2px solid #303030;
+    padding-right : 20px;
+    width: 270px;
+    .username{
+      font-size: 24px;
+      .lyby_ellipsis();
+    }
+    .desc{
+      .lyby_ellipsis();
+      color : #8f8f8f;
+      font-size: 18px;
+      margin-top:10px;
+    }
+  }
+  .img_desc{
+    font-size : 18px;
+    margin-left : 20px;
+  }
+}

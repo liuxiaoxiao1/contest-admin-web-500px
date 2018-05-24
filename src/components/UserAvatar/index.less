@@ -1,0 +1,40 @@
+.user-avatar-container {
+  a {
+    &.nav-avatar {
+      padding: 0px !important;
+    }
+  }
+  .nav-avatar {
+    img {
+      background-image: none;
+      position: relative;
+      text-overflow: ellipsis;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+    }
+
+    &.avatar-small {
+
+      line-height: 25px;
+    }
+    &:hover {
+      background-color: #FFFFFF !important;
+    }
+    &:hover, &:active, &:visited {
+      text-decoration: none !important;
+    }
+  }
+  .nick-name {
+    color: #525558;
+    margin-left: 12px;
+    text-decoration: none;
+    &:hover {
+      color: #0099e5;
+    }
+    &:hover, &:active, &:visited {
+      text-decoration: none !important;
+    }
+  }
+}
+

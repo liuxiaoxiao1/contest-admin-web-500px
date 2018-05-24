@@ -1,0 +1,109 @@
+.reviewer-submit-overview-modal {
+  .ant-modal-body {
+    padding: 0px;
+    //padding-top: 5px;
+  }
+  .head-container {
+    height: 40px;
+    overflow: hidden;
+    background-color: #eeeff2;
+    color: #71767a;
+    text-align: center;
+
+
+    .source-container-head {
+      width: 60%;
+      float: left;
+      height: 40px;
+      line-height: 40px;
+      font-size: 1.4rem;
+      color: #71767a;
+      border-right: 1px solid #FFFFFF;
+    }
+    .target-container-head {
+      width: 40%;
+      float: left;
+      height: 40px;
+      line-height: 40px;
+      font-size: 1.4rem;
+      color: #71767a;
+      padding-left: 20px;
+    }
+  }
+
+
+  .main-content-container {
+    height: 480px;
+    border-top: 1px solid #eeeff2;
+    .source-main-content-wrapper {
+      width: 100%;
+      height: 100%;
+      float: left;
+      border-right: 1px solid #eeeff2;
+      overflow-y: scroll;
+    }
+
+    /*Begin:下面是单个评委管理的样式*/
+    .reviewer-manage-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      line-height: 64px;
+      border-bottom: 1px solid #eeeff2;
+      padding: 0 25px;
+
+      &:first-child {
+        border-top: none;
+      }
+
+      .reviewer-item-container {
+        float: left;
+      }
+    }
+
+    .item-txt {
+      font-size: 1.4rem;
+      color: #71767a;
+    }
+
+
+    .btn-action {
+      display: inline-block;
+      float: right;
+      width: 85px;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 1.3rem;
+      font-weight: 500;
+      text-align: center;
+      background-color: #f7f8fa;
+
+
+      &:hover {
+        transition: opacity .2s ease-out,color .2s ease-out;
+        opacity: 0.7;
+      }
+
+      &.normal {
+        color: #0099e5;
+
+        border: solid 1px #0089d2;
+
+      }
+      &.selected {
+        color: #ff4c4c;
+        border: solid 1px #ff4c4c;
+      }
+
+
+    }
+
+    /*End:下面是单个评委管理的样式*/
+  }
+
+
+
+}

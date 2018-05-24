@@ -1,0 +1,57 @@
+
+.search-container-contest {
+  position: relative;
+  display: flex;
+  align-items: center;
+  float: left;
+  height: 38px;
+  .search-icon {
+    background-image: url("../../../assets/images/icon2x.png");
+    background-size: 312px 60px;
+    position: absolute;
+    left: 15px;
+    height: 20px;
+    width: 20px;
+    border: none;
+    background-color: transparent;
+    background-position: -100px top;
+    overflow: hidden;
+    text-indent: 30px;
+    cursor: pointer;
+    pointer-events: none;
+  }
+  input.input-txt {
+    padding: 5px 10px 5px 20px;
+    color: #525558;
+    border: 1px solid rgba(185,193,199,0.5);
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.15) inset;
+    box-shadow: 0 1px 0 rgba(255,255,255,.15) inset;
+    -webkit-transition: background-color .1s ease-in-out;
+    -moz-transition: background-color .1s ease-in-out;
+    transition: background-color .1s ease-in-out;
+    font-size: 13px;
+    border-radius: 100px;
+    &:focus {
+      border-color: #0099e5;
+    }
+  }
+  .grid-btn {
+    height: 30px;
+    line-height: 30px;
+    width: 70px;
+    font-size: 14px;
+  }
+  &.width-search-btn {
+    .input-txt {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .grid-btn {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+  }
+}

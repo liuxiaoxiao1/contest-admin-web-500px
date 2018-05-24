@@ -1,0 +1,60 @@
+.story_container {
+  .cardLists {
+    .card {
+      transition: all .2s;
+      .hover-region {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        transition: all .2s;
+        position: absolute;
+        opacity: 0;
+        z-index: 102;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0, 0.5);
+
+
+        .button-action {
+          width: 100px;
+          height: 36px;
+          line-height: 36px;
+          color: #FFFFFF;
+          font-size: 14px;
+
+        }
+
+        .action-confirm {
+          background-color: #34bf49;
+          border-color: #34bf49;
+          box-shadow: inset 0 2px 0 0 #34bf49;
+          &:hover {
+            background-color: #34bf49;
+          }
+
+        }
+        .action-undetermined {
+          margin-top: 15px;
+          &:hover {
+            background-color: #0099e5;
+            border-color: #0099e5;
+            box-shadow: inset 0 2px 0 0 #0099e5;
+            background-color: #0099e5;
+          }
+        }
+
+
+      }
+      &:hover {
+        .hover-region {
+          opacity: 1;
+        }
+      }
+
+    }
+  }
+}
