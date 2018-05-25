@@ -198,7 +198,13 @@ var webpackConfig = {
               },
               {
                   loader: 'less-loader'
-              }
+              },
+              // {
+              //      loader: 'sass-loader',
+              //       options: {
+              //           includePaths: [paths.appSrc]
+              //       }
+              // }
 
 
             ],

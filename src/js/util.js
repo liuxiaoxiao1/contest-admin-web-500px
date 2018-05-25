@@ -63,13 +63,6 @@ var sjApp = {
 	    div.innerHTML = s;  
 	    return div.innerText || div.textContent;  
 	},
-	validateUser : function() {
-		if (!SJ_UT.id) {
-			this.errorMsg({status:0});
-			return false;
-		}
-		return true;
-	},
 	toArray : function(a, i, j){
 		return Array.prototype.slice.call(a, i || 0, j || a.length);
 	},
@@ -208,13 +201,6 @@ var sjApp = {
 		}
 		return avatarUrl;
 	},
-	urlPath : function () {
-		if (typeof(SJ_UT)!='undefined' && SJ_UT.id) {
-			return '/community/';
-		}else{
-			return '/community/';
-		}
-	}(),
 	filterUrl : function (urlStr) {
 		return this.urlPath+urlStr;
 	},
@@ -445,64 +431,6 @@ var sjApp = {
 			}
 		}
 	}(),
-	handlebarsUtils : function () {
-		Handlebars.registerHelper('filterCommentDate', function(commentDate,options) {
-			if (typeof(commentDate) == 'string' && commentDate.indexOf('-')!=-1) {
-				commentDate = new Date(commentDate.replace(/-/g,'\/')).getTime();
-			}
-			return sjApp.time_ago_in_words(new Date().getTime()-parseInt(commentDate));
-		});
-		Handlebars.registerHelper('filterCommentDateTitle', function(commentDate,options) {
-			if (typeof(commentDate) == 'string' && commentDate.indexOf('-')!=-1) {
-				return commentDate;
-			}
-			return new Date(parseInt(commentDate)).pattern("yyyy-MM-dd E hh:mm:ss");
-		});
-		Handlebars.registerHelper('user_avatar', function(obj,urlParm,options) {
-			return sjApp.user_avatar.apply(this,arguments);
-		});
-		Handlebars.registerHelper('isOwnedByCurrentUser', function(curObj,options) {
-			if (!curObj) {
-				return;
-			}
-			if (curObj.id == SJ_UT.id) {
-				return options.fn(this);
-			}
-		});
-		Handlebars.registerHelper('isNotOwnedByCurrentUser', function(curObj,options) {
-			if (!curObj) {
-				return;
-			}
-			if (curObj.id != SJ_UT.id) {
-				return options.fn(this);
-			}
-		});
-		// 最后一个参数作为展示内容，也就是平时的options。不作为逻辑表达式部分
-		Handlebars.registerHelper('expression', function() {
-			var exps = [];
-			try {
-				var arg_len = arguments.length;
-				var len = arg_len - 1;
-				for (var j = 0; j < len; j++) {
-					exps.push(arguments[j]);
-				}
-				var result = eval(exps.join(' '));
-				if (result) {
-					return arguments[len].fn(this);
-				} else {
-					return arguments[len].inverse(this);
-				}
-			} catch (e) {
-			}
-		});
-
-		Handlebars.registerHelper('getImgUrl', function(curObj,paramstr,options) {
-			if (!curObj) {
-				return;
-			}
-			return sjApp.getImgUrl.apply(this,arguments);
-		});
-	},
 	override : function(origclass, overrides) {
 		if (overrides) {
 			var p = origclass.prototype;

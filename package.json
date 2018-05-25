@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "autoprefixer": "7.1.6",
+    "axios": "^0.18.0",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
@@ -35,6 +36,7 @@
     "jquery": "^3.3.1",
     "jssor-slider": "^27.1.0",
     "justifiedGallery": "^3.6.5",
+    "lodash": "^4.17.10",
     "mobx": "^3.6.0",
     "mobx-react": "^4.4.2",
     "moment": "^2.20.1",
@@ -43,6 +45,7 @@
     "postcss-loader": "2.0.8",
     "promise": "8.0.1",
     "prop-types": "^15.6.1",
+    "qs": "^6.5.2",
     "raf": "3.4.0",
     "react": "^16.2.0",
     "react-cookie": "^2.1.4",
@@ -63,7 +66,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "HOST=review.500px.me node scripts/start.js ",
+    "start": "node scripts/start.js ",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
@@ -137,7 +140,10 @@
     "ajv": "^6.2.1",
     "antd": "^3.2.3",
     "babel-plugin-import": "^1.6.5",
+    "babel-plugin-lodash": "^3.3.2",
+    "babel-preset-env": "^1.7.0",
     "less": "^3.0.1",
-    "less-loader": "^4.0.6"
+    "less-loader": "^4.0.6",
+    "node-sass": "^4.9.0"
   }
 }

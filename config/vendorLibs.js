@@ -7,7 +7,7 @@
 //     'redux-form', 'moment', 'strophe.js'
 const VENDOR_LIBS = [
   'react', 'react-dom', 'react-router-dom','jquery',
-  'prop-types',
+  'prop-types', 'lodash', 'axios'
 
 ];
 
