@@ -84,7 +84,6 @@ class UserStore {
                                 content: '您没有相关权限',
                                 okText: "确认"
                             });
-                            message.error('');
                             return '';
                         }
 
