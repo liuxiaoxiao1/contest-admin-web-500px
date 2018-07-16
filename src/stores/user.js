@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { observable, useStrict, action, runInAction } from 'mobx';
+import { message, Modal } from 'antd'
 import { observer } from 'mobx-react';
 import { Ajax } from '../utils/utils'
 import Util from '../utils/web-utils'
@@ -76,9 +77,29 @@ class UserStore {
             Ajax.post('/user/v2/tologin', (paramsObj), true).then((resData) => {
                 console.log('resData', resData);
                 runInAction(()=> {
-                    this.user = resData.userAccountInfo;
-                    Util.setUser(resData.userAccountInfo);
-                    resolve(resData.userAccountInfo);
+                    if(resData.status == '200') {
+                        if(!resData.userAccountInfo.userRoleIds.contestbackadmin) {
+                            Modal.error({
+                                title: '登录失败',
+                                content: '您没有相关权限',
+                                okText: "确认"
+                            });
+                            message.error('');
+                            return '';
+                        }
+
+                        this.user = resData.userAccountInfo;
+                        Util.setUser(resData.userAccountInfo);
+                        resolve(resData.userAccountInfo);
+                    }else {
+                        Modal.error({
+                            title: '登录失败',
+                            content: '用户名或密码错误',
+                            okText: "确认"
+                        });
+                    }
+
+
                 })
 
             })
