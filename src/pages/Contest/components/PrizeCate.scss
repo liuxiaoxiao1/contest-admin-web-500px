@@ -1,0 +1,34 @@
+@import "../../../base";
+
+
+.edit-page-container {
+  padding-bottom: 95px;
+  .edit-main-container {
+    width: 100%;
+    margin-top: 50px;
+    background-color: #ffffff;
+    padding: 50px 100px;
+
+
+
+  }
+
+
+  .button-edit {
+    margin: 0 auto;
+    margin-top: 65px;
+  }
+}
+
+
+.add-btn-region {
+  width: 100%;
+  height: 60px;
+  margin-top: 30px;
+  font-size: 16px;
+  background-color: #EEEFF2;
+  color: #0099E5;
+  line-height: 60px;
+  cursor: pointer;
+  text-align: center;
+}

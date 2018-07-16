@@ -1,13 +1,11 @@
-import SessionApi from './SessionApi';
-import PhotosApi from './PhotosApi';
-import UsersApi from './UsersApi';
-import NotificationsApi from './NotificationsApi';
-import MessengerApi from './MessengerApi';
+import ContestApi from './ContestApi';
+import MessageApi from './MessageApi';
+import TribeApi from './TribeApi';
+import UploadApi from './UploadApi';
 
 export {
-  SessionApi,
-  PhotosApi,
-  UsersApi,
-  NotificationsApi,
-  MessengerApi,
+    ContestApi,
+    MessageApi,
+    TribeApi,
+    UploadApi,
 };

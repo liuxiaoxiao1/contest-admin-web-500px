@@ -59,7 +59,7 @@ Button.defaultProps = {
 }
 Button.protoTypes = {
     classnames: ProtoTypes.string,
-    style: ProtoTypes.string,
+    style: ProtoTypes.object,
     showString: ProtoTypes.string.isRequired,
     isNeedBgc: ProtoTypes.bool.isRequired,
     clickFunction: ProtoTypes.func,

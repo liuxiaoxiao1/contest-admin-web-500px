@@ -205,7 +205,7 @@ var lyby = {
         return this.localStorage.setValue('curUser', JSON.stringify(value));
     },
     loginUser: function () {
-        return JSON.parse(this.localStorage.getValue('curUser')) || {};
+        return JSON.parse(this.localStorage.getValue('curUser') || '{}') || {};
     },
     localStorage: {
         setValue: function (key, value) {

@@ -1,0 +1,70 @@
+@import "../../../base";
+
+.main-body.edit-page-container.column-page {
+  max-width: 1000px;
+  .edit-main-container {
+    padding: 50px 30px;
+  }
+
+}
+.setting-region {
+  width: 100%;
+  font-size: 16px;
+  .setting-row {
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .row__item {
+      height: 60px;
+      line-height: 60px;
+      width: 100px;
+      color: #71767A;
+      text-align: center;
+
+      &:first-child {
+        text-align: left;
+      }
+      &:nth-child(n+2) {
+        margin-left: 35px;
+      }
+
+      &.row__item_form {
+        //width: 100%;
+        height: 38px;
+        display: flex;
+        align-items: center;
+
+      }
+
+    }
+
+
+    &.row-head {
+      .row__item {
+        color: #525558;
+      }
+    }
+
+    &:nth-child(odd) {
+
+    }
+    &:nth-child(even) {
+      background: #F7F8FA;
+    }
+
+
+    .ant-input {
+      background: #F7F8FA;
+    }
+
+    .ant-select {
+      .ant-select-selection {
+        background: #F7F8FA;
+      }
+    }
+
+
+  }
+}

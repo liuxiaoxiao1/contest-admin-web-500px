@@ -20,22 +20,17 @@ import { observer }  from 'mobx-react'
 
 useStrict(true)
 
-// import Home from '../apps/index'
-// import Login from '../apps/login'
-// import NotFound from '../apps/notFound'
-// import ReviewAdmin from '../apps/reviewAdmin'
-// import ReviewListMy from '../apps/reviewListMy'
-// import ItemSummary from '../apps/taskItem/ItemSummary'
-// import ReviewGraphicTxtList from '../apps/reviewGraphicTxtList/index'
-// import ReviewGraphicTxtDetail from '../apps/reviewGraphicTxtDetail/index'
-// import ReviewImagesList from '../apps/reviewImgsList/index'
 
 
 //TODO: 1.首页的组件需要动态获取，根据用户权限来
 //FIXED: 2.组件异步加载
 //TODO: vendor等js文件 不需要变的事情
 
-let ReviewAdmin = '';
+let ContestList = '';
+let ContestEdit = '';
+let ContestPresentPrize = '';
+
+
 let ItemSummary = '';
 let ReviewListMy = '';
 let ReviewGraphicTxtList = '';
@@ -46,13 +41,15 @@ let IndexComponent = '';
 
 
 //添加chunkName
-ReviewAdmin = asyncComponent(() => import(/* webpackChunkName: 'reviewAdmin' */'../apps/reviewAdmin'))
-ItemSummary = asyncComponent(() => import(/* webpackChunkName: 'itemSummary' */'../apps/taskItem/ItemSummary'))
-ReviewListMy = asyncComponent(() => import(/* webpackChunkName: 'reviewListMy' */'../apps/reviewListMy/index.js'))
-ReviewGraphicTxtList = asyncComponent(() => import(/* webpackChunkName: 'reviewGraphicTxtList' */'../apps/reviewGraphicTxtList/index'))
-ReviewGraphicTxtDetail = asyncComponent(() => import(/* webpackChunkName: 'reviewGraphicTxtDetail' */'../apps/reviewGraphicTxtDetail/index'))
-ReviewImagesList = asyncComponent(() => import(/* webpackChunkName: 'reviewImgsList' */'../apps/reviewImgsList/index'))
-Login = asyncComponent(() => import(/* webpackChunkName: 'login' */'../apps/login'))
+ContestList = asyncComponent(() => import(/* webpackChunkName: 'contestList' */'../pages/ContestList/index'))
+ContestEdit = asyncComponent(() => import(/* webpackChunkName: 'contestEdit' */'../pages/Contest/index'))
+ContestPresentPrize = asyncComponent(() => import(/* webpackChunkName: 'contestPresentPrize' */'../pages/ContestPresentPrize/index'))
+
+
+
+
+
+Login = asyncComponent(() => import(/* webpackChunkName: 'login' */'../pages/Login'))
 
 
 
@@ -62,7 +59,7 @@ function getIndexComponent(user) {
     if(!user.admin) {
         IndexComponent = ReviewListMy;
     }else {
-        IndexComponent = ReviewAdmin;
+        IndexComponent = ContestList;
     }
     return IndexComponent
 }
@@ -73,25 +70,17 @@ function getIndexComponent(user) {
 const Routes = ({user = {}}) => (
     <Router>
         <div>
-            <AuthorizedRoute exact path="/" loggedInOnly component={getIndexComponent(user)} />
-            <AuthorizedRoute exact path="/index" loggedInOnly component={getIndexComponent(user)} />
+            <AuthorizedRoute exact path="/" loggedInOnly component={ContestList} />
+            <AuthorizedRoute exact path="/index" loggedInOnly component={ContestList} />
 
-            {/* 评审任务管理*/}
-            <AuthorizedRoute path="/review-admin" adminOnly loggedInOnly component={ReviewAdmin} />
-            <AuthorizedRoute path="/review-summary/:id" adminOnly loggedInOnly component={ItemSummary} />
+            {/* 大赛管理*/}
+            <AuthorizedRoute path="/contest-admin" adminOnly loggedInOnly component={ContestList} />
 
+            <AuthorizedRoute  path="/contest" adminOnly loggedInOnly component={ContestEdit} />
 
-            {/* 我的评审任务列表 */}
-            <AuthorizedRoute path="/review-list-my" loggedInOnly component={ReviewListMy} />
-
-
-            {/* 图文评审任务列表 */}
-            <AuthorizedRoute path="/review/graphic/list/:id" loggedInOnly component={ReviewGraphicTxtList} />
-            <AuthorizedRoute path="/review/graphic/detail/:id" loggedInOnly  component={ReviewGraphicTxtDetail} />
+            <AuthorizedRoute exact path="/present/:id/prize" adminOnly loggedInOnly component={ContestPresentPrize}/>
 
 
-            {/* 单图组图混排评审任务列表 */}
-            <AuthorizedRoute path="/review/images/single/:id" loggedInOnly component={ReviewImagesList} />
 
 
             <Route path="/login" component={Login} />

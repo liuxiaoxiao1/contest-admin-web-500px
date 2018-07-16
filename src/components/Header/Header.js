@@ -31,13 +31,15 @@ class Header extends React.Component {
         // }, 2000)
         //TODO: 做到访问页面判断登录状态了
         User.getLoginUserInfo().then((resData) => {
+            console.log('rrrrrrr', resData);
             if(resData.id) {
 
             }else {
+                console.log(88888888888888);
                 this.props.history.push('/login', {goBack: true})
             }
             //如果没有返回数据的话，需要跳转到登录页面，并且附带当前页面url
-            console.log('this.props', this.props);
+            console.log('this.props 787877', this.props);
             //this.props.history.push('/login', {goBack: true})
         });
 
@@ -99,16 +101,16 @@ class Header extends React.Component {
                         {
                             User.user.admin ? (
                                     <li>
-                                        <NavLink to="/review-admin" activeClassName="active">
-                                            评审任务管理
+                                        <NavLink to="/contest-admin" activeClassName="active">
+                                            大赛列表
                                         </NavLink>
                                     </li>
                                 ): ''
                         }
 
                         <li>
-                            <NavLink to="/review-list-my" activeClassName="active">
-                                评审任务列表
+                            <NavLink to="/contest-admin" activeClassName="active">
+                                大赛列表
                             </NavLink>
 
                         </li>

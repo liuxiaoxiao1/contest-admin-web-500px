@@ -29,7 +29,7 @@ class NormalLoginForm extends React.Component {
         return (
             <Form onSubmit={this.handleSubmit} className="login-form" id="components-form-demo-normal-login">
                 <FormItem>
-                    {getFieldDecorator('username', {
+                    {getFieldDecorator('userName', {
                         rules: [{ required: true, message: '请输入用户名' }],
                     })(
                         <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="用户名" />

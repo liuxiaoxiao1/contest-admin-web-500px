@@ -45,6 +45,8 @@ const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 9000;
 const HOST = process.env.HOST || '0.0.0.0';
 console.log('HOST',HOST);
 
+console.log('DEFAULT_PORT', DEFAULT_PORT);
+
 if (process.env.HOST) {
   console.log(
     chalk.cyan(

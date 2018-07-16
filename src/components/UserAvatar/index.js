@@ -20,8 +20,11 @@ class UserAvatar extends React.Component {
         const { showUserName, userInfo } = me.props;
 
         let avatarUrl = ''
+
+        console.log(' userInfo.avatar.a1 3333',  userInfo.avatar.a1);
         if(userInfo) {
-            avatarUrl = userInfo.avatarUrl ? userInfo.avatarUrl : defaultAvatar
+            console.log(' userInfo.avatar.a1',  userInfo.avatar.a1);
+            avatarUrl = userInfo.avatar.a1 ? userInfo.avatar.a1 : defaultAvatar
         }
 
         //TODO: 要判断一下头像的有无，没有的话给出默认头像

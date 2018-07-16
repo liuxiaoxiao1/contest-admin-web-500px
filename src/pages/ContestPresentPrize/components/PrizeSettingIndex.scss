@@ -1,0 +1,57 @@
+@import "../../../base";
+
+
+.edit-page-container {
+  .content-title {
+    text-align: center;
+    font-size: 30px;
+    color: #71767A;
+  }
+
+  .action-btn {
+    width: 100px;
+  }
+
+
+  .content-main-container {
+    margin-top: 50px;
+    .content-per-container {
+      background-color: #ffffff;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      padding: 50px;
+
+      .content-per-title {
+        font-size: 24px;
+        color: #71767A;
+        margin-bottom: 40px;
+      }
+      .content-per-note {
+        font-size: 14px;
+        color: #71767A;
+      }
+
+      .content-items-container {
+        margin-top: 25px;
+        .content-item {
+          display: flex;
+          align-items: center;
+          height: 40px;
+          margin-bottom: 15px;
+
+          .item-title {
+            width: 80px;
+            margin-right: 20px;
+          }
+
+
+        }
+      }
+
+
+
+    }
+
+  }
+}
+

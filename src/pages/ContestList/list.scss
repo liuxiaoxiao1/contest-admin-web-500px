@@ -1,0 +1,1108 @@
+@import "../../base";
+
+.search-container-contest {
+  input.input-txt {
+    padding-left: 10px;
+  }
+}
+
+.admin-search {
+  width: 350px;
+  height: 46px;
+  margin-bottom: 15px;
+
+  .input-txt {
+    font-size: 14px;
+  }
+}
+
+.select-region {
+  .admin-select {
+    &:nth-child(n+2) {
+      margin-left: 15px;
+    }
+  }
+}
+
+.item-list-container {
+  .list-head {
+    .head__search {
+      padding: 0 25px;
+      margin-bottom: 20px;
+
+    }
+  }
+
+}
+.pagination-container {
+  text-align: center;
+}
+
+
+
+
+
+/* 以下引用自nodejs-500px项目 */
+.photo_grid_region_contest_v3 {
+  letter-spacing: 0.5px;
+  .px_card {
+    position: relative;
+    width: 280px;
+    display: inline-block;
+    vertical-align: top;
+    background-color: #fff;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+    -webkit-border-radius: 3px;
+    border-radius: 3px
+  }
+  .px_card:hover {
+    -webkit-box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.08)
+  }
+
+  .px_card.small {
+    width: 280px;
+    margin: 0 10px 20px 10px
+  }
+
+  .px_card.medium {
+    width: 360px;
+    margin: 0 25px 50px 25px
+  }
+
+  .px_card.medium .top {
+    height: 240px
+  }
+
+  .px_card.medium .bottom {
+    height: 110px;
+    padding-top: 35px
+  }
+
+  .px_card.no_badge.no_avatar .bottom {
+    height: 90px;
+    padding-top: 15px
+  }
+
+  .px_card.no_badge .top {
+    height: 240px
+  }
+
+  .px_card.no_badge .bottom {
+    height: 110px;
+    padding-top: 10px
+  }
+
+  .px_card.no_badge .name {
+    font-size: 20px;
+    line-height: 1.4em
+  }
+
+  .px_card.no_badge .description {
+    margin-bottom: 8px
+  }
+
+  .px_card.no_badge .avatar_wrap {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto
+  }
+
+  .px_card.no_badge .avatar, .px_card.no_badge .avatar_background {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: none;
+    position: absolute;
+    bottom: auto;
+    left: auto;
+    margin-left: auto
+  }
+
+  .px_card.nsfw_placeholder .nsfw_placeholder_content {
+    display: table
+  }
+
+  .px_card.nsfw_placeholder img {
+    display: none
+  }
+
+  .px_card .nsfw_placeholder_content {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+    text-align: center;
+    padding: 0 10px
+  }
+
+  .px_card .nsfw_placeholder_content span {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff
+  }
+
+  .px_card .link_wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 100
+  }
+
+  .px_card .top {
+    position: relative;
+    width: 100%;
+    height: 130px;
+    background-size: cover;
+    background-position: center;
+    background-color: #b9c1c7;
+    -webkit-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+    border: 1px solid #eeeff2;
+    border-bottom: none;
+    border-top: none
+  }
+
+  .px_card .avatar {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #fff;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 150;
+    bottom: -30px;
+    left: 50%;
+    margin-left: -30px;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s
+  }
+
+  .px_card .avatar.avatar--no_hover {
+    z-index: 99
+  }
+
+  .px_card .avatar.avatar--popular {
+    background-color: #ffcd26;
+    background-image: url(//assetcdn.500px.org/assets/photos/popular_white-452419a72b02a580ea869f2c826251f0.svg);
+    background-size: 32px
+  }
+
+  .px_card .avatar.avatar--upcoming {
+    background-color: #0099e5;
+    background-image: url(//assetcdn.500px.org/assets/photos/upcoming_white-1a4a662082fb58e112231b6ef89475f8.svg);
+    background-size: 32px
+  }
+
+  .px_card .avatar.avatar--editors {
+    background-color: #525558;
+    background-image: url(//assetcdn.500px.org/assets/photos/editors_choice_white-f29d797df153d5e3853a697ad1cfd708.svg);
+    background-size: 32px 27px
+  }
+
+  .px_card .avatar:not(.avatar--no_hover):hover {
+    opacity: 0.7
+  }
+
+  .px_card .avatar_background {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #fff;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 10;
+    bottom: -30px;
+    left: 50%;
+    margin-left: -30px;
+    background-color: #fff
+  }
+
+  .px_card .bottom {
+    width: 100%;
+    height: 150px;
+    text-align: center;
+    padding-top: 35px;
+    border: 1px solid #eeeff2;
+    border-top: none;
+    -webkit-border-radius: 0 0 3px 3px;
+    border-radius: 0 0 3px 3px
+  }
+
+  .px_card .name, .px_card .followers, .px_card .description {
+    line-height: 1.4em
+  }
+
+  .px_card .follow-button {
+    display: inline-block
+  }
+
+  .px_card .button {
+    position: relative;
+    z-index: 150
+  }
+
+  .px_card .name {
+    color: #525558;
+    font-size: 24px;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+    position: relative;
+    z-index: 150;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: calc(100% - 20px);
+  }
+
+  .px_card .name:hover {
+    color: #0099e5
+  }
+
+  .px_card .followers, .px_card .description {
+    color: #b9c1c7;
+    font-size: 14px;
+    display: block;
+    margin: 0 auto 15px auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 20px);
+  }
+
+  .px_card .followers a, .px_card .description a {
+    color: #525558;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+    position: relative;
+    z-index: 150
+  }
+
+  .px_card .followers a:hover, .px_card .description a:hover {
+    color: #00aaff
+  }
+
+  .px_card.following .follow {
+    display: none
+  }
+
+  .px_card.following .following {
+    display: inline-block;
+    margin: 0
+  }
+
+  .px_card.self .follow {
+    display: none
+  }
+
+  .px_card.self .following {
+    display: none
+  }
+
+  .px_card .following, .px_card .self {
+    display: none
+  }
+
+  .quests_index_layout {
+    min-height: 100vh;
+    background-color: #f7f8fa;
+    padding: 0
+  }
+  .active_quests_list__wrapper, .ended_quests_list__wrapper {
+    padding: 20px 0 40px 0;
+    width: 820px;
+    text-align: center;
+    margin: 0 auto
+  }
+
+  @media only screen and (min-width: 1270px) {
+    .active_quests_list__wrapper, .ended_quests_list__wrapper {
+      width: 1230px;
+      text-align: left
+    }
+  }
+
+  @media only screen and (min-width: 1680px) {
+    .active_quests_list__wrapper, .ended_quests_list__wrapper {
+      width: 1640px;
+      text-align: left
+    }
+  }
+
+  @media only screen and (min-width: 2090px) {
+    .active_quests_list__wrapper, .ended_quests_list__wrapper {
+      width: 2050px;
+      text-align: left
+    }
+  }
+
+  @media only screen and (min-width: 2500px) {
+    .active_quests_list__wrapper, .ended_quests_list__wrapper {
+      width: 2460px;
+      text-align: left
+    }
+  }
+  .active_quests_list__title, .ended_quests_list__title {
+    text-align: left;
+    padding: 0 25px
+  }
+
+  .active_quests_list {
+    background-color: #f7f8fa
+  }
+
+  .ended_quests_list {
+    background-color: #f7f8fa
+  }
+
+  .quest_item {
+    display: inline-block;
+    position: relative;
+  }
+
+  .px_card.no_badge .top {
+    height: 200px
+  }
+
+  .quest_card__top {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center
+  }
+
+  .quest_card__center {
+    text-align: center;
+    width: 100%;
+  }
+
+  .quest_card__quest_title {
+    position: relative;
+    z-index: 10;
+    color: #fff;
+    font-size: 22px;
+    line-height: 1.2em;
+    margin-bottom: 10px;
+    padding: 0 20px;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+    @extend .ll_ellipsis;
+  }
+  .quest_card__quest_sub-title {
+    position: relative;
+    z-index: 10;
+    font-size: 14px;
+    color: #FFFFFF;
+    @extend .ll_ellipsis;
+  }
+
+
+
+
+  .quest_card__overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0.7)));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%)
+  }
+
+  .quest_card__time_remaining {
+    position: relative;
+    z-index: 10;
+    line-height: 1.4em
+  }
+
+  .quest_card__clock_icon {
+    margin-right: 5px;
+    width: 14px;
+    height: 14px;
+    -webkit-background-size:14px;
+    background-size:14px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    //letter-spacing: 0.5px;
+    background-image: url('#{$CDN_500PX}/contest_public/assets/img/svg/icon_time.svg');
+    display: inline-block;
+    vertical-align: middle
+  }
+
+  .quest_card__time_calculation {
+    font-size: 12px;
+    color: #fff;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+    display: inline-block;
+    vertical-align: middle
+  }
+
+  .quest_card__quest_is_over_title {
+    width: 100%;
+    z-index: 10;
+    font-size: 12px;
+    color: #fff;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.6)
+  }
+
+  .quest_card__prize {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 10px;
+    z-index: 10;
+    white-space: nowrap;
+    text-align: left
+  }
+
+  .quest_card__prize_icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 14px;
+    background-size: 16px 14px;
+    margin-right: 5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('#{$CDN_500PX}/images/svg/prize.svg')
+  }
+
+  .quest_card__prize_text {
+    font-size:12px;
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+    max-width: calc(100% - 20px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+  }
+
+  .quest_card__prize_text > p {
+    font-size: 14px;
+    color: white;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.6)
+  }
+
+  .quest_card__sponsor_name {
+    font-weight:normal;
+    font-size: 12px;
+    color: #7c8185;
+    margin: 0 auto
+  }
+
+  .quest_card__sponsor_logo {
+    max-height: 20px
+  }
+
+  .quest_card__sponsor_logo--500px {
+    max-height: 12px
+  }
+
+  .px_card.medium.no_badge.no_avatar .bottom.quest_card__bottom {
+    height: 50px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0 15px
+  }
+
+  .quests_banner_region {
+    background-color: #fff
+  }
+
+  .quest_show_layout {
+    position: relative
+  }
+
+  .quest__cta {
+    height: auto;
+    font-size: 16px;
+    min-width: 200px;
+    padding: 7px
+  }
+
+  .quest_header {
+    border-bottom: 1px solid #eeeff2;
+    color: #525558
+  }
+
+  .quest_header__title {
+    font-size: 30px;
+    margin-bottom: 10px
+  }
+
+  .quest_header__subtitle {
+    font-size: 14px;
+    margin-bottom: 20px
+  }
+
+  .quest_header__details {
+    padding: 40px 50px;
+    position: relative;
+    text-align: center
+  }
+
+  .quest_header__sponsor_logo {
+    width: 125px
+  }
+
+  .quest_header__sponsor_logo--small {
+    width: 75px
+  }
+
+  .quest_header__buttons_region {
+    position: absolute;
+    top: 10px;
+    right: 50px
+  }
+
+  .quest_header__sponsor_link {
+    color: #525558
+  }
+
+  .quest_sticky_header {
+    pointer-events: none;
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    overflow: hidden;
+    z-index: 2000;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-bottom: none;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    line-height: 50px
+  }
+
+  .quest_sticky_header--visible {
+    opacity: 1;
+    pointer-events: auto
+  }
+
+  .quest_sticky_header__left {
+    position: absolute;
+    left: 50px;
+    width: 100%
+  }
+
+  .quest_sticky_header__right {
+    position: absolute;
+    right: 50px
+  }
+
+  .quest_sticky_header__sponsor_logo {
+    float: left;
+    height: 26px;
+    margin-top: 12px;
+    margin-right: 20px
+  }
+
+  .quest_sticky_header__sponsor_logo--small {
+    height: 20px;
+    margin-top: 15px
+  }
+
+  .quest_sticky_header__title {
+    display: inline-block
+  }
+
+  .quest_sticky_header__sponsor {
+    display: inline-block;
+    color: #b9c1c7
+  }
+
+  .quest_sticky_header__quest_status {
+    display: inline-block;
+    color: #b9c1c7
+  }
+
+  .quest_sticky_header__buttons_region {
+    display: inline-block
+  }
+
+  .quest_buttons__sharelizer_region {
+    display: inline-block
+  }
+
+  .quest_buttons__sharelizer_region .button.share {
+    padding-left: 34px;
+    padding-right: 10px;
+    background-image: url(//assetcdn.500px.org/assets/share-9b741791a2a7a5821d29b9a23d92bc66.svg);
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    background-size: 16px
+  }
+
+  .quest_show__content {
+    text-align: center;
+    background-color: #f7f8fa
+  }
+
+  .quest_details_section {
+    padding-top: 80px
+  }
+
+  .quest_details_section:empty {
+    padding-top: 0
+  }
+
+  .quest_details_section__heading {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #525558
+  }
+
+  .quest_winners {
+    color: #525558
+  }
+
+  .quest_winners__user_link {
+    color: #0099e5
+  }
+
+  .quest_winners__photo_grid_region {
+    margin-top: 20px
+  }
+
+  .quest_winners .photo_thumbnail {
+    margin-bottom: 10px
+  }
+
+  .quest_brief__text_wrapper {
+    width: 500px;
+    margin: 0 auto 40px auto;
+    text-align: left
+  }
+
+  .quest_brief__text {
+    line-height: 1.4em
+  }
+
+  .quest_brief__panel_wrapper {
+    display: inline-block;
+    width: 800px;
+    text-align: left;
+    margin-bottom: 60px;
+    font-size: 0
+  }
+
+  .quest_brief__panel {
+    display: inline-block;
+    max-width: (calc'(100% - 80px) / 3');
+    margin-right: 40px;
+    color: #525558;
+    vertical-align: top;
+    font-size: 14px;
+    line-height: 1.4em
+  }
+
+  .quest_brief__panel--right {
+    margin-right: 0
+  }
+
+  .quest_brief__panel_header {
+    font-size: 18px;
+    margin: 10px 0 20px
+  }
+
+  .quest_brief__panel_text a {
+    color: #525558;
+    text-decoration: underline
+  }
+
+  .quest_brief__panel_icon {
+    background-position: center left;
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 28px
+  }
+
+  .quest_brief__panel_icon--timing {
+    background-image: url(//assetcdn.500px.org/assets/quests/timing-81fa216327a51390845af04d4d70a8e7.svg)
+  }
+
+  .quest_brief__panel_icon--rules {
+    background-image: url(//assetcdn.500px.org/assets/quests/rules-c6212b48dc2d741a16a0a044ba9148d2.svg)
+  }
+
+  .quest_brief__panel_icon--prize {
+    background-image: url(//assetcdn.500px.org/assets/quests/prize-9495909ac0e08015abea11c68d534ec6.svg)
+  }
+
+  .submit_to_quest_popover__container {
+    width: 200px
+  }
+
+  .submit_to_quest_popover__option {
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    border-bottom: 1px solid #f7f8fa
+  }
+
+  .submit_to_quest_popover__option:hover {
+    background-color: #eeeff2;
+    cursor: pointer
+  }
+
+  .submit_to_quest_popover__icon {
+    display: inline-block;
+    background-position: center center;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    margin: 0 10px
+  }
+
+  .submit_to_quest_popover__icon--upload {
+    background-image: url(//assetcdn.500px.org/assets/quests/upload-614b110b33959d71e6fad0baace6828b.svg);
+    width: 20px;
+    height: 14px
+  }
+
+  .submit_to_quest_popover__icon--library {
+    background-image: url(//assetcdn.500px.org/assets/quests/library-10d168e3ebc3ed9ea827c7122e572e8f.svg);
+    width: 16px;
+    height: 16px;
+    margin: 0 12px
+  }
+
+  .submit_to_quest {
+    width: 200px
+  }
+
+  .submit_to_quest--small {
+    width: auto
+  }
+
+  .submit_to_quest__footer {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 20px;
+    color: #525558
+  }
+
+  .submit_to_quest__footer_text {
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.4em
+  }
+
+  .submit_to_quest__footer_text .contest_rules_link {
+    color: #525558;
+    text-decoration: underline
+  }
+
+  .mobile_submit_to_quest {
+    display: block
+  }
+
+  .quest_prize, .quest_brand {
+    max-width: 800px;
+    margin: 0 auto
+  }
+
+  .quest_prize__content, .quest_brand__content {
+    width: 500px;
+    margin: 0 auto;
+    text-align: left
+  }
+
+  .quest_prize__image, .quest_brand__image {
+    margin: 20px 0;
+    max-width: 100%
+  }
+
+  .quest_images {
+    margin-top: 80px
+  }
+
+  .quest_images__tabs {
+    background-color: #f7f8fa;
+    border-bottom: 1px solid #eeeff2;
+    margin-bottom: 10px
+  }
+
+  .quest_cta_wrapper {
+    margin-top: 20px;
+    text-align: center
+  }
+
+  .quest_brand_callout {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff
+  }
+
+  .quest_brand_callout__header {
+    font-size: 18px;
+    margin-bottom: 10px
+  }
+
+  .quest_brand_callout__text {
+    width: 100%;
+    display: inline-block;
+    line-height: 1.4em
+  }
+
+  .quest_brand_callout__text a {
+    color: #fff;
+    text-decoration: underline
+  }
+
+  .quest_content__brand_callout_region {
+    background-color: #000;
+    padding: 40px
+  }
+
+  .quest_content__images_region {
+    margin-bottom: 40px
+  }
+
+  .quest_inspiration__grid_region, .quest_submissions__grid_region {
+    max-width: calc(100% - 80px);
+    margin: 0 auto
+  }
+
+  .quest_status_banner {
+    width: 100%;
+    height: 50px;
+    background-color: #0099e5;
+    text-align: center;
+    line-height: 50px;
+    color: #fff
+  }
+
+  .quest_judge {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 100%;
+    border-top: .5px solid;
+    border-bottom: .5px solid;
+    border-color: rgba(0, 0, 0, 0.05);
+    text-align: center
+  }
+
+  .quest_judge__avatar img {
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px
+  }
+
+  .quest_judge__name {
+    margin: 15px
+  }
+
+  .quest_judge__fullname {
+    font-size: 18px;
+    color: #525558
+  }
+
+  .quest_judge__username {
+    font-size: 16px;
+    color: darkgrey
+  }
+
+  .quest_judge__bio {
+    max-width: 500px;
+    color: #525558;
+    margin: 10px auto
+  }
+
+  @media only screen and (max-width: 900px) {
+    .quest_header__buttons_region {
+      display:none
+    }
+
+    .quest_brief__panel_wrapper {
+      width: 100%;
+      margin-bottom: 20px
+    }
+
+    .quest_brief__panel {
+      display: block;
+      width: 500px;
+      margin-right: auto;
+      margin: 0 auto 40px auto
+    }
+
+    .quest_show__content {
+      padding-top: 40px
+    }
+
+    .quest_sticky_header__left {
+      left: 10px
+    }
+
+    .quest_sticky_header__right {
+      right: 10px
+    }
+
+    .quest_show__content {
+      padding: 0 20px
+    }
+
+    .quest_inspiration__grid_region,.quest_submissions__grid_region {
+      width: 100%
+    }
+
+    .quest_content__brand_callout_region {
+      margin-left: -20px
+    }
+  }
+
+  @media only screen and (max-width: 820px) {
+    .active_quests_list__wrapper,.ended_quests_list__wrapper {
+      width:410px
+    }
+
+    .quest_sticky_header__sponsor_logo {
+      margin-right: 10px;
+      margin-top: 15px;
+      height: 20px
+    }
+
+    .quest_sticky_header__right {
+      display: none
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .quest_winners {
+      padding-top:0
+    }
+
+    .quest_header__title {
+      font-size: 24px
+    }
+
+    .quest_header__details {
+      padding: 40px 10px
+    }
+
+    .quest_brand,.quest_prize,.quest_prize__content {
+      width: 100%
+    }
+
+    .quest_details_section {
+      padding-top: 40px
+    }
+
+    .quest_images {
+      margin-top: 40px
+    }
+
+    .quest_brief__panel {
+      width: 100%
+    }
+
+    .quest_brief__text_wrapper {
+      width: 100%
+    }
+
+    .quest_show__content {
+      padding: 0 10px
+    }
+
+    .quest_content__brand_callout_region {
+      padding: 40px 20px;
+      width: 100vw
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .active_quests_list__wrapper,.ended_quests_list__wrapper {
+      width:100%;
+      padding: 40px 0 20px 0
+    }
+
+    .active_quests_list__title,.ended_quests_list__title {
+      padding: 0 10px
+    }
+
+    .quest_item {
+      display: block
+    }
+
+    .px_card.medium.no_badge {
+      max-width: calc(100% - 20px);
+      margin: 0 0 20px 0
+    }
+
+    .px_card.medium.no_badge .top {
+      height: 170px
+    }
+
+    .px_card.medium.no_badge .bottom {
+      height: 130px;
+      padding: 20px 0
+    }
+
+    .px_card.medium.no_badge .bottom .name {
+      font-size: 20px
+    }
+
+    .px_card.medium.no_badge .bottom .description {
+      font-size: 14px
+    }
+  }
+}

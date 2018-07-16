@@ -1,0 +1,55 @@
+.content-wrapper {
+    height: 200px;
+    padding-top: 50px;
+    text-align: center;
+    .setting-title {
+        font-size: 2.4rem;
+        color: #222222;
+    }
+
+    .setting-txt--common {
+        text-align: center;
+        font-size: 2rem;
+    }
+    .switch-list-show {
+        margin-top: 20px;
+    }
+
+    .ant-input-number {
+        margin-top: 20px
+    }
+    .switch-item-active {
+        margin-top: 20px;
+    }
+}
+
+
+.content-present-prize {
+    .prize-row {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .ant-input {
+        height: 36px;
+    }
+    .item-id {
+        width: 350px;
+    }
+    .item-show {
+        padding: 4px 10px;
+        color: #0099E5;
+    }
+    .present-btn {
+       margin: 0 10px;
+    }
+
+    .ant-btn {
+        width: 85px;
+        height: 36px;
+    }
+
+
+
+}

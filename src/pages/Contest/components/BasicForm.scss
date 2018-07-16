@@ -1,0 +1,77 @@
+@import "../../../base";
+
+
+$itemWith: 360px;
+$itemHeight: 45px;
+
+.main-body.edit-page-container {
+  max-width: 960px;
+}
+
+.contest-edit-form {
+  .ant-row {
+    width: $itemWith;
+  }
+  .ant-form-item-label label {
+    font-size: 16px;
+  }
+  .label-txt {
+    font-size: 16px;
+    color: #71767A;
+  }
+  .label_note {
+    font-size: 14px;
+    color: #B9C1C7;
+  }
+
+  .ant-form-item-control {
+    .ant-input, .ant-select-selection {
+      height: $itemHeight;
+    }
+
+    .ant-select {
+      width: $itemWith;
+    }
+
+    .ant-select-selection {
+      .ant-select-selection__rendered {
+        line-height: $itemHeight;
+      }
+
+    }
+    .ant-input-sm {
+      line-height: 20px;
+      height: 22px;
+    }
+    .ant-tag {
+      margin-bottom: 8px;
+    }
+    .ant-input-number {
+      height: $itemHeight;
+      width: $itemWith;
+      .ant-input-number-input {
+        height: 40px;
+      }
+    }
+    .ant-calendar-picker {
+      width: $itemWith;
+    }
+
+
+
+
+  }
+  .contest-upload-button {
+    height: 30px;
+    line-height: 28px;
+    padding: 0 20px;
+    width: auto;
+  }
+
+  .common-url {
+    display: inline-block;
+    word-break: break-word;
+    margin: 10px 0;
+  }
+
+}

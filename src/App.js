@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { useStrict } from 'mobx'
 import { observer } from 'mobx-react'
 
+import zhCN from 'antd/lib/locale-provider/zh_CN';
+import LocaleProvider from 'antd/lib/locale-provider';
+
 import Routes from './routes';
 import Loading from './components/Loading/Loading_new';
 
@@ -24,11 +27,12 @@ class App extends Component {
   // We need to fetch session data immediately upon loading the app
   componentDidMount() {
     if (!User.sessionActive) {
+        console.log(22222);
       this.fetchSession();
     }
   }
   fetchSession() {
-    User.getLoginUserInfo();
+    User.getLoginUserInfo()
   }
 
   // Determine we have the basic data required to start the app
@@ -47,7 +51,9 @@ class App extends Component {
     console.log('user update', User.user);
 
     return (
-        <Routes user={User.user}/>
+        <LocaleProvider locale={zhCN}>
+          <Routes user={User.user}/>
+        </LocaleProvider>
     );
   }
 }

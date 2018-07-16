@@ -4,7 +4,9 @@ import { Route } from 'react-router-dom';
 import NotFound from './NotFound';
 import Util from '../utils/web-utils'
 
+
 import User from '../stores/user'
+
 
 function AuthorizedRoute({
   feature,
@@ -18,9 +20,10 @@ function AuthorizedRoute({
     {...rest}
     render={(props) => {
       let user = User.user;
+
       const loggedInAuthorized = loggedInOnly ? !Util.isEmptyObj(user) : true;
       const featureAuthorized = feature ? authorizations.get(feature) : true;
-      const admin = user ? user.admin : false;
+      const admin = user ? (user.userRoleIds && user.userRoleIds.contestbackadmin) : false;
       const adminAuthorized = adminOnly ? admin : true;
 
       console.log('props', props);

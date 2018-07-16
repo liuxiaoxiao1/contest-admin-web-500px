@@ -1,11 +1,14 @@
 import Api from './Api';
 
+//暂时没有用到
+
+
 export default class SessionApi {
   static getSession() {
     return Api.v2.get('/authentication/session');
   }
 
   static logout() {
-    return Api.ajax().post(`${process.env.REACT_APP_MAIN_500PX_URL}/logout?_method=delete`);
+    return Api.ajax().post(`/logout?_method=delete`);
   }
 }

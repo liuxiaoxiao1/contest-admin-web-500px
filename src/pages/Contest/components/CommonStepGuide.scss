@@ -1,0 +1,64 @@
+.step-guide-region {
+  .guide-line-region,  .guide-line-region div.node-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .guide__node {
+      text-align: center;
+      background-color: #D7DDE1;
+      border: 2px solid #ffffff;
+
+      border-radius: 50%;
+      &.node--normal {
+        width: 20px;
+        height: 20px;
+      }
+      &.node--cur {
+        background-color: #525558;
+        width: 34px;
+        height: 34px;
+        line-height: 28px;
+        color: #ffffff;
+        font-size: 14px;
+      }
+      &.node--pass {
+        background-color: #0099E5;
+        width: 34px;
+        height: 34px;
+        line-height: 28px;
+      }
+    }
+
+    .segment-line {
+      width: 120px;
+      height: 4px;
+      background-color: #D7DDE1;
+      &.line--pass {
+        background-color: #0099E5;
+      }
+    }
+
+  }
+
+
+  .guide-txt-region {
+    margin: 0 auto;
+    width: 640px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+
+    .txt_item {
+      width: 160px;
+      //padding-left: 9px;
+      text-align: center;
+      font-size: 14px;
+      color: #71767A;
+    }
+  }
+
+
+
+
+}

@@ -1,0 +1,39 @@
+
+
+.contest-tribe-map-modal {
+  .ant-modal-body {
+    padding: 10px 0;
+  }
+  .search-container {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .ant-checkbox + span {
+    padding-left: 30px;
+  }
+
+  .content-items-list {
+    height: 480px;
+    overflow-y: scroll;
+    border-top: 1px solid #D7DDE1;
+    border-bottom: 1px solid #D7DDE1;
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      height: 60px;
+      background-color: #F7F8FA;
+      border-bottom: 1px solid #D7DDE1;
+      padding-left: 30px;
+
+      .item-name {
+        margin-right: 30px;
+        width: 100px;
+      }
+    }
+
+
+
+  }
+}
