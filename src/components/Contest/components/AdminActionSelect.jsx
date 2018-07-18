@@ -57,13 +57,13 @@ function showDeleteConfirm(item) {
         okType: 'danger',
         cancelText: '取消',
         onOk() {
-            //TODO: 调用store中方法移除掉数据 ->  调用contestAPI 执行删除操作，待验证，先注释最后验证
-            // ContestStore.deleteContest(item).then((response) => {
-            //     let resData = response.data;
-            //     if(resData.status == '200') {
-            //         message.success('修改成功');
-            //     }
-            // });
+            // 调用store中方法移除掉数据 ->  调用contestAPI 执行删除操作，待验证，先注释最后验证
+            ContestStore.deleteContest(item).then((response) => {
+                let resData = response.data;
+                if(resData.status == '200') {
+                    message.success('删除成功');
+                }
+            });
 
         },
         onCancel() {

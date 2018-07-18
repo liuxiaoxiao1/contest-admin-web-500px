@@ -125,7 +125,7 @@ class NormalEditForm extends React.Component {
                     <FormItem style={{width: '100%', height: '30px', margin: 'auto'}} >
                         {getFieldDecorator(inputKey + '-alias', {
                             rules: [{required: true, message: '请输入名称'}],
-                            initialValue: item.alias
+                            initialValue: showName
                         })(
                             <Input placeholder="" onChange={this.onAliasChange.bind(this, inputKey)}
                                    style={{height: '30px'}}/>

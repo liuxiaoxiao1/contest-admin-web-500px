@@ -31,11 +31,8 @@ let ContestEdit = '';
 let ContestPresentPrize = '';
 
 
-let ItemSummary = '';
+
 let ReviewListMy = '';
-let ReviewGraphicTxtList = '';
-let ReviewGraphicTxtDetail = '';
-let ReviewImagesList = '';
 let Login = '';
 let IndexComponent = '';
 

@@ -317,7 +317,18 @@ class NormalEditForm extends React.Component {
                 </FormItem>
 
 
-                <FormItem label={<span className="label-txt">级别</span>} style={{float:'right'}}>
+                <FormItem label={(<span className="label-txt">副标题<span className="label_note"></span></span>)}
+                          style={{float:'right'}}>
+                    {getFieldDecorator('subtitle', {
+                        rules: [{required: true, message: '请输入大赛副标题'}],
+                        initialValue: ContestEditStore.curItem.subtitle
+                    })(
+                        <Input placeholder="请输入大赛副标题" />
+                    )}
+                </FormItem>
+
+
+                <FormItem label={<span className="label-txt">级别</span>} style={{float:'left'}}>
                     {getFieldDecorator('contestCategory', {
                         rules: [{required: true, message: '请选择'}],
                         initialValue: ContestEditStore.curItem.contestCategory,
@@ -335,9 +346,10 @@ class NormalEditForm extends React.Component {
                     )}
                 </FormItem>
 
+
                 {/*TODO: 该字段未定义 */}
                 <FormItem label={(<span className="label-txt">比赛分类<span className="label_note">（可多选）</span></span>)}
-                          style={{float:'left'}}>
+                          style={{float:'right'}}>
                     {getFieldDecorator('resourceCategory', {
                         rules: [{required: true, message: '请输入任务说明'}],
                         initialValue: ContestEditStore.curItem.resourceCategory ?
@@ -356,8 +368,11 @@ class NormalEditForm extends React.Component {
                         </Select>
                     )}
                 </FormItem>
+
+                <div className="clearfix"></div>
+
                 <FormItem label={<span className="label-txt">关键词</span>}
-                          style={{float:'right'}}>
+                          style={{float:'left'}}>
                     {
                         (ContestEditStore.curItem.tags ? ContestEditStore.curItem.tags.split(',') : []).map((tag, index) => {
                             const isLongTag = tag.length > 20;
@@ -509,9 +524,13 @@ class NormalEditForm extends React.Component {
                         }}></UIButton>
                     </Upload>
 
-                    <a href={ContestEditStore.curItem.webUrl.baseUrl + '!p3'} target="_balnk" className={'common-url'}>
-                        {ContestEditStore.curItem.webUrl.baseUrl + '!p3'}
-                    </a>
+                    {
+                        ContestEditStore.curItem.webUrl.baseUrl ? (
+                            <a href={ContestEditStore.curItem.webUrl.baseUrl + '!p3'} target="_balnk" className={'common-url'}>
+                                {ContestEditStore.curItem.webUrl.baseUrl + '!p3'}
+                            </a>
+                        ) : ''
+                    }
 
                 </FormItem>
 
@@ -523,9 +542,16 @@ class NormalEditForm extends React.Component {
                             isNeedBgc: false
                         }}></UIButton>
                     </Upload>
-                    <a href={ContestEditStore.curItem.appUrl.baseUrl + '!p3'} target="_balnk" className={'common-url'}>
-                        {ContestEditStore.curItem.appUrl.baseUrl + '!p3'}
-                    </a>
+
+                    {
+                        ContestEditStore.curItem.appUrl.baseUrl ? (
+                            <a href={ContestEditStore.curItem.appUrl.baseUrl + '!p3'} target="_balnk" className={'common-url'}>
+                                {ContestEditStore.curItem.appUrl.baseUrl + '!p3'}
+                            </a>
+                        ) : ''
+                    }
+
+
                 </FormItem>
 
 
@@ -580,9 +606,16 @@ class NormalEditForm extends React.Component {
                             isNeedBgc: false
                         }}></UIButton>
                     </Upload>
-                    <a href={ContestEditStore.curItem.webDetailUrl.baseUrl + '!p3'} target="_balnk" className={'common-url'}>
-                        {ContestEditStore.curItem.webDetailUrl.baseUrl + '!p3'}
-                    </a>
+
+                    {
+                        ContestEditStore.curItem.webDetailUrl.baseUrl ? (
+                            <a href={ContestEditStore.curItem.webDetailUrl.baseUrl + '!p3'} target="_balnk" className={'common-url'}>
+                                {ContestEditStore.curItem.webDetailUrl.baseUrl + '!p3'}
+                            </a>
+                        ) : ''
+                    }
+
+
                 </FormItem>
 
                 {/* appDetailUrl */}
@@ -594,12 +627,30 @@ class NormalEditForm extends React.Component {
                             isNeedBgc: false
                         }}></UIButton>
                     </Upload>
-                    <a href={ContestEditStore.curItem.appDetailUrl.baseUrl + '!p3'} target="_balnk" className={'common-url'}>
-                        {ContestEditStore.curItem.appDetailUrl.baseUrl + '!p3'}
-                    </a>
+                    {
+                        ContestEditStore.curItem.appDetailUrl.baseUrl ? (
+                            <a href={ContestEditStore.curItem.appDetailUrl.baseUrl + '!p3'} target="_balnk" className={'common-url'}>
+                                {ContestEditStore.curItem.appDetailUrl.baseUrl + '!p3'}
+                            </a>
+                        ) : ''
+                    }
+
                 </FormItem>
 
                 <span className="clearfix"></span>
+
+
+                <FormItem label={<span className="label-txt">填充色值</span>} style={{float:'left'}}>
+                    {getFieldDecorator('visionColor', {
+                        rules: [{required: false, message: '请输入填充色值'}],
+                        initialValue: ContestEditStore.curItem.visionColor
+                    })(
+                        <Input placeholder="请输入填充色值" />
+                    )}
+                </FormItem>
+                <span className="clearfix"></span>
+
+
 
                 <FormItem label={<span className="label-txt">APP端详情页提示信息</span>} style={{float:'left'}}>
                     {getFieldDecorator('attentionApp', {

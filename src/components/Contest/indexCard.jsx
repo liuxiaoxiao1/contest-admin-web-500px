@@ -113,7 +113,17 @@ class ContestItem extends React.Component {
                     </div>
                     <div className="bottom quest_card__bottom">
 
-                        <h2 className="quest_card__sponsor_name" dangerouslySetInnerHTML={{__html : item.hostUnit}}></h2>
+                        {
+                            item.hostType == 0 ? (
+                                <h2 className="quest_card__sponsor_name" dangerouslySetInnerHTML={{__html : item.hostUnit}}></h2>
+                            ) :""
+                        }
+
+                        {
+                            item.hostType == 1 ? (
+                                <img src={item.hostLogo.baseUrl + '!p1'} alt="" className="quest_card__sponsor_logo"/>
+                            ) :""
+                        }
 
                     </div>
                 </div>

@@ -70,7 +70,7 @@ let ContestEditCurItemInit = {
         "id": ""
     },
     "domainName": "",
-    "subtitle": "",
+    "subtitle": "", //副标题
     "contestType": 0,  // 0 普通赛 1邀请赛
     "contestProperty": {
         "autoToTribe": false,
@@ -586,10 +586,14 @@ let guideStore = {
 let newPrizeCateData = {
     key: '', //获奖目标  实际上的奖项分组依据  prizeUsers  prizeWorks
     uuid: '',
+    targetKey: '',
     data: {
-        "groupNames": "",
+        "groupName": "",
         "name":"",
-        prizes: []
+        prizes: [{
+            name: '',
+            uuid: uuid()
+        }]
     }
 }
 
@@ -954,37 +958,99 @@ class ContestListStore {
         let prizeCate = me.prizeCategories;
 
         let prizeCategories = [];
-        //理论上最多有两种分组： 1.摄影师 2.作品  （部落的暂时不处理）
+        //按颁奖对象分，理论上最多有两种大分组： 1.摄影师 2.作品  （部落的暂时不处理）
         //根据prizes数组长度来判断是否 有该分组
         if (prizeCate.prizeUser.prizes.length) {
-            let _data = prizeCate.prizeUser;
+            //let _data = prizeCate.prizeUser;
             let _items = prizeCate.prizeUser.prizes;
 
-            //每一个奖项都要添加上uuid, 在删除的时候使用
-            for (let i = 0, l = _items.length; i < l; i++) {
-                //TODO: 添加uuid的代码没有经过测试
-                _items[i].uuid = uuid();
+
+            //后台接口的数据结构设计要为 这么复杂的数据处理负责
+            //TODO: 恶心的逻辑处理来了，要根据groupNames来判断 颁奖给人的是否有多个分组
+
+            if(prizeCate.prizeUser.groupNames) {
+                let groups = prizeCate.prizeUser.groupNames.split(',');
+
+                //先将所有奖项按照 各自的groupName分组
+                //用key来区分小分组
+                let _groupPrizeItems = {};
+                for (let j = 0, len = _items.length; j < len; j++) {
+                    //每一个奖项都要添加上uuid, 在删除的时候使用
+                    _items[j].uuid = uuid();
+                    if(_groupPrizeItems[_items[j].groupName]) {
+                        _groupPrizeItems[_items[j].groupName].push(_items[j]);
+                    }else {
+                        _groupPrizeItems[_items[j].groupName] = [_items[j]];
+                    }
+                }
+
+
+                //来填充具体奖项了
+                for(let i = 0,l = groups.length;i < l; i++) {
+                    prizeCategories.push({
+                        key: groups[i],
+                        uuid: ++uuid_prize_category,
+                        targetKey: 'prizeUser',
+                        //prizes 先置空，随后的奖项遍历的时候 再归类填充进来
+                        data: {
+                            groupName: groups[i],
+                            prizes: _groupPrizeItems[groups[i]]
+                        }
+                    })
+
+                    // prizeCategories.push({
+                    //     key: 'prizeUser',
+                    //     data: _data
+                    // })
+
+                }
+
             }
-            prizeCategories.push({
-                key: 'prizeUser',
-                data: _data
-            })
+
             // prizeCategories.prizeUser = prizeCate.prizeUser;
         }
 
+
+        //这里和上面 是可以合并处理的，为避免不太好读懂，就不合并了
         if (prizeCate.prizeWorks.prizes.length) {
-            let _data = prizeCate.prizeWorks;
+            //let _data = prizeCate.prizeWorks;
             let _items = prizeCate.prizeWorks.prizes;
 
-            //每一个奖项都要添加上uuid, 在删除的时候使用
-            for (let i = 0, l = _items.length; i < l; i++) {
-                _items[i].uuid = uuid();
+            //后台接口的数据结构设计 要为这么复杂的数据处理负责
+            //TODO: 恶心的逻辑处理来了，要根据groupNames来判断 颁奖给人的是否有多个分组
+
+            if(prizeCate.prizeWorks.groupNames) {
+                let groups = prizeCate.prizeWorks.groupNames.split(',');
+
+                //先将所有奖项按照 各自的groupName分组
+                //用key来区分小分组
+                let _groupPrizeItems = {}
+                for (let j = 0, len = _items.length; j < len; j++) {
+                    //每一个奖项都要添加上uuid, 在删除的时候使用
+                    _items[j].uuid = uuid();
+                    if(_groupPrizeItems[_items[j].groupName]) {
+                        _groupPrizeItems[_items[j].groupName].push(_items[j]);
+                    }else {
+                        _groupPrizeItems[_items[j].groupName] = [_items[j]];
+                    }
+                }
+
+                //来填充具体奖项了
+                for(let i = 0,l = groups.length;i < l; i++) {
+                    prizeCategories.push({
+                        key: groups[i],
+                        uuid: ++uuid_prize_category,
+                        targetKey: 'prizeWorks',
+                        //prizes 先置空，随后的奖项遍历的时候 再归类填充进来
+                        data: {
+                            groupName: groups[i],
+                            prizes: _groupPrizeItems[groups[i]]
+                        }
+                    })
+                }
             }
-            prizeCategories.push({
-                key: 'prizeWorks',
-                data: _data
-            })
-            // prizeCategories.prizeWorks = prizeCate.prizeWorks;
+
+
         }
 
         //这里还可以做一下优化，其他字段不需要处理了
@@ -1013,12 +1079,20 @@ class ContestListStore {
             if(resData.data.status == '200') {
                 runInAction(() => {
                     if(!resData.data.data.hostLogo) {
+
+
+                        console.log(88888888888);
+
                         resData.data.data.hostLogo = {
                             baseUrl: "",
-                            id: ''
+                            id: '',
+                            p1: ''
                         }
                     }
                     this.curItem = resData.data.data;
+
+                    console.log('this.curItem', this.curItem);
+
                 })
             }
 
@@ -1075,7 +1149,7 @@ class ContestListStore {
 
         //if need to show host logo
         if(values['hostType'] === 1) {
-            _postParam.hostLogo =  this.curItem.hostType.baseUrl;
+            _postParam.hostLogo =  this.curItem.hostLogo;
         }
 
         //邀请赛
@@ -1097,40 +1171,55 @@ class ContestListStore {
         }
 
 
+
+        console.log('basic post postParams',  postParams);
+
+
         ContestApi.newOrUpdateContest(postParams).then((resData) => {
             console.log('resData', resData);
 
             //请求成功
             if(resData.data.status == 200) {
-                let msg = '';
-                let stateObj = {};
+                runInAction(() => {
 
-                //编辑大赛
-                if(resData.data.contestId) {
-                    msg = '大赛信息更新成功';
-                    stateObj = {contestId: resData.data.contestId}
-                }else {
-                    //新建大赛
-                    msg = '大赛基本信息配置成功';
-                }
+                    let msg = '';
+                    let stateObj = {};
 
-                //设置大赛主题信息
-                let themeData = resData.data.data;
+                    //编辑大赛
+                    if(curContestId) {
+                        msg = '大赛信息更新成功';
+                        stateObj = {contestId: resData.data.contestId}
+                    }else {
+                        //新建大赛
 
-                //这里要给主题分类里的 附加信息添加key，否则删除的时候，信息根据索引去展示会错乱（主题信息不用添加，因为后台有生成主题的id）
-                for(let i = 0,l = themeData.length; i<l; i++) {
-                    let curThemeUploadInfo = themeData[i].uploadInfo;
-                    if(curThemeUploadInfo.length) {
-                        for(let j = 0,l = curThemeUploadInfo.length; j<l; j++) {
-                            curThemeUploadInfo[j].id = ++uuid_theme_extrinfo;
+                        msg = '大赛基本信息配置成功';
+                        me.curItem.contestProperty.id = resData.data.contestId;
+
+                        console.log(887777788,  me.curItem.contestProperty.id);
+                    }
+
+                    //设置大赛主题信息
+                    let themeData = resData.data.data;
+
+                    //这里要给主题分类里的 附加信息添加key，否则删除的时候，信息根据索引去展示会错乱（主题信息不用添加，因为后台有生成主题的id）
+                    for(let i = 0,l = themeData.length; i<l; i++) {
+                        let curThemeUploadInfo = themeData[i].uploadInfo;
+                        if(curThemeUploadInfo.length) {
+                            for(let j = 0,l = curThemeUploadInfo.length; j<l; j++) {
+                                curThemeUploadInfo[j].id = ++uuid_theme_extrinfo;
+                            }
                         }
                     }
-                }
-                me.themes = themeData;
+                    me.themes = themeData;
 
-                message.success(msg);
-                //跳转到 大赛主题信息
-                history.push('/contest/theme?id=' + resData.data.contestId, stateObj)
+                    message.success(msg);
+                    //跳转到 大赛主题信息
+                    history.push('/contest/theme?id=' + resData.data.contestId, stateObj);
+
+                })
+
+
+
             }else {
                 if(curContestId) {
                     message.error('大赛更新失败');
@@ -1183,17 +1272,19 @@ class ContestListStore {
         console.log('this.curItem key', key);
         console.log('this.curItem value', value);
 
-        if(!this.curItem[key]) {
-            console.log(77777);
-            extendObservable(this.curItem, {
-                [key]: value
-            });
+        this.curItem[key] = value;
 
-            console.log('this.curItem[key] 22', this.curItem[key]);
-
-        }else {
-            this.curItem[key] = value;
-        }
+        // if(!this.curItem[key]) {
+        //     console.log(77777);
+        //     extendObservable(this.curItem, {
+        //         [key]: value
+        //     });
+        //
+        //     console.log('this.curItem[key] 22', this.curItem[key]);
+        //
+        // }else {
+        //     this.curItem[key] = value;
+        // }
 
     }
 
@@ -1325,7 +1416,7 @@ class ContestListStore {
                 let columnData = resData.data.data;
                 let defaultPage = resData.data.defaultTab;
 
-                //新建大赛的时候  两个值（栏目状态和默认页面）是空 就不要赋值了，取本地的默认值
+                //新建大赛的时候  两个值（栏目状态和默认页面）是空 就不要赋值了，取本地的默认值： （目前这种情况不存在了）
                 if(!Util.isEmptyObj(columnData)) {
                     me.columnSetting = columnData;
                 }
@@ -1368,7 +1459,7 @@ class ContestListStore {
      * @param value
      */
     @action updateAliasByKey = (key, value) => {
-        this.columnSetting[key].alias = value;
+        this.columnSetting[key].displayName = value;
     }
 
 
@@ -1479,7 +1570,7 @@ class ContestListStore {
      * @param event
      */
     @action updatePrizeCateName = (i, name) => {
-        this.prizeItems[i].data.groupNames = name;
+        this.prizeItems[i].data.groupName = name;
     }
 
 
@@ -1500,12 +1591,13 @@ class ContestListStore {
         let tempObj = assign({}, newPrizeCateData, {
             uuid: ++uuid_prize_category
         });
-        tempObj.data.prizes.push({
-            name: '',
-            uuid: uuid()
-        })
+        // tempObj.data.prizes.push({
+        //     name: '',
+        //     uuid: uuid()
+        // })
 
         this.prizeItems = [...this.prizeItems, assign({}, tempObj)];
+
 
 
         // let prizeUserLength = me.prizeCategories.prizeUser.prizes.length;
@@ -1542,7 +1634,7 @@ class ContestListStore {
      * @param value
      */
     @action changePrizeCategory = (cateIndex, value) => {
-        this.prizeItems[cateIndex].key = value;
+        this.prizeItems[cateIndex].targetKey = value;
     }
 
 
@@ -1603,31 +1695,50 @@ class ContestListStore {
         //TODO: 这里从store中取数据
         let originalData = this.prizeCategories;
 
+
+        console.log('formData xiaoxiaoliu', formData);
+
         //TODO: 做到组装数据了
+        originalData.prizeUser.groupNames = '';
+        originalData.prizeWorks.groupNames = '';
+        let _userGroupNames = [];
+        let _worksGroupNames = [];
+        let _prizeUserItems = [];
+        let _prizeWorksItems = [];
+
+
         for(let i = 0,l = formData.length; i<l; i++) {
             let item = formData[i];
-            if(item.key == 'prizeUser') {
-                originalData.prizeUser.groupNames = item.data.groupNames;
-                originalData.prizeUser.prizes = item.data.prizes;
+            if(item.targetKey == 'prizeUser') {
+                 //会在遍历奖项的时候  填充
 
                 // 这里给prizes中的item 添加  level  contestShowName groupName 后台必须要的字段
-                for(let i = 0,l = originalData.prizeUser.prizes.length; i<l; i++) {
-                    originalData.prizeUser.prizes[i].level = i;
-                    originalData.prizeUser.prizes[i].contestShowName = 'prizeUser';
-                    originalData.prizeUser.prizes[i].groupName = item.data.groupNames;
+                for(let i = 0,l = item.data.prizes.length; i<l; i++) {
+                    let _item = item.data.prizes[i];
+                    _item.level = i;
+                    _item.contestShowName = 'prizeUser';
+                    _item.groupName = item.data.groupName;
+                    _prizeUserItems.push(_item);
 
+                    if(!~_userGroupNames.indexOf(item.data.groupName)) {
+                        _userGroupNames.push(item.data.groupName);
+                    }
                 }
 
-
-            }else if(item.key == 'prizeWorks') {
-                originalData.prizeWorks.groupNames = item.data.groupNames;
+            }else if(item.targetKey == 'prizeWorks') {
                 originalData.prizeWorks.prizes = item.data.prizes;
 
                 // 这里给prizes中的item 添加  level  contestShowName groupName 后台必须要的字段
-                for(let i = 0,l = originalData.prizeWorks.prizes.length; i<l; i++) {
-                    originalData.prizeWorks.prizes[i].level = i;
-                    originalData.prizeWorks.prizes[i].contestShowName = 'prizeWorks';
-                    originalData.prizeWorks.prizes[i].groupName = item.data.groupNames;
+                for(let i = 0,l = item.data.prizes.length; i<l; i++) {
+                    let _item = item.data.prizes[i];
+                    _item.level = i;
+                    _item.contestShowName = 'prizeWorks';
+                    _item.groupName = item.data.groupName;
+                    _prizeWorksItems.push(_item);
+
+                    if(!~_worksGroupNames.indexOf(item.data.groupName)) {
+                        _worksGroupNames.push(item.data.groupName);
+                    }
                 }
 
 
@@ -1635,6 +1746,14 @@ class ContestListStore {
 
 
         }
+
+        originalData.prizeUser.groupNames = _userGroupNames.join(',');
+        originalData.prizeWorks.groupNames = _worksGroupNames.join(',');
+
+        originalData.prizeUser.prizes = _prizeUserItems;
+        originalData.prizeWorks.prizes = _prizeWorksItems;
+
+
 
         console.log('lulululu', originalData);
 

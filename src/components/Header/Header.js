@@ -11,7 +11,7 @@ import Login from '../Login'
 import User from '../../stores/user'
 import NavUser from '../NavUser/NavUser'
 import { autobind } from 'core-decorators'
-import { Ajax } from '../../utils/utils'
+
 
 useStrict(true);
 

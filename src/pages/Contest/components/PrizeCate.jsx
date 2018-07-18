@@ -89,17 +89,16 @@ class ContestTheme extends React.Component {
         const { confirmLoading } = this.state;
 
         let canAddCategory = true;
-        if(ContestEditStore.prizeCategories.prizeUser.prizes.length &&
-            ContestEditStore.prizeCategories.prizeWorks.prizes.length) {
-            canAddCategory = false;
-        }
-
-        if(ContestEditStore.prizeItems.length >= 2) {
-            canAddCategory = false
-        }
+        // if(ContestEditStore.prizeCategories.prizeUser.prizes.length &&
+        //     ContestEditStore.prizeCategories.prizeWorks.prizes.length) {
+        //     canAddCategory = false;
+        // }
+        //
+        // if(ContestEditStore.prizeItems.length >= 2) {
+        //     canAddCategory = false
+        // }
 
         console.log('ContestEditStore.prizeItems.length', ContestEditStore.prizeItems.length);
-
 
 
 

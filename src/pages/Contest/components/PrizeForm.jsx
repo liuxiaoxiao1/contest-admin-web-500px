@@ -154,12 +154,13 @@ class NormalEditForm extends React.Component {
 
             let item = prizeCategories[i];
             let key = item.key;
+            let targetKey = item.targetKey;
             let values = item.data;
             let prizeTarget = '';
 
-            if(key == 'prizeUser') {
+            if(targetKey == 'prizeUser') {
                 prizeTarget = 1;
-            } else if(key == 'prizeWorks') {
+            } else if(targetKey == 'prizeWorks') {
                 prizeTarget = 2;
             }
 
@@ -179,7 +180,7 @@ class NormalEditForm extends React.Component {
                 <FormItem label={(<span className="label-txt">名称<span className="label_note">（8字以内）</span></span>)} style={{float:'left'}}>
                     {getFieldDecorator(`groupName-${item.uuid}`, {
                         rules: [{required: true, message: '分组名称'}],
-                        initialValue: values.groupNames
+                        initialValue: values.groupName
                     })(
                         <Input placeholder="" onChange={this.onGroupNameChange.bind(this, i)}/>
                     )}
