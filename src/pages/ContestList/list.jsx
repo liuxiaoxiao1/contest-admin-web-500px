@@ -12,6 +12,7 @@ import ContestItem from '../../components/Contest/indexCard'
 
 import Loading from '../../components/Loading/Loading_new'
 import ContestStore from '../../stores/contest-store'
+import ContestEditStore from '../../stores/contest-edit-store'
 
 import { autobind } from 'core-decorators'
 
@@ -21,7 +22,7 @@ import { observer } from 'mobx-react'
 
 
 import './list.scss'
-import Util from "../../utils/web-utils";
+
 
 
 useStrict(true)
@@ -64,6 +65,8 @@ class ContestList extends React.Component {
 
     @autobind
     newContest() {
+
+        ContestEditStore.newContest();
 
         this.props.history.push('/contest');
 

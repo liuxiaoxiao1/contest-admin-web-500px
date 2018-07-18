@@ -20,6 +20,8 @@ let uuid_prize_category = 0; //奖项分类的uuid
 
 
 
+
+//这个权当做 字段说明的吧 没啥卵用 不想删了
 let ContestEditCurItemInit = {
     "warmupEndTime": '',
     "webType": '', //Web端详情页样式;0-背景图，1-主视觉
@@ -209,6 +211,71 @@ let ContestEditCurItemInit = {
         "judgeMsg": ""
     },
     "judgeEndTime": '',
+
+}
+
+let ContestNewInitData = {
+    "category": "",
+    "warmupEndTime": "",
+    "webType": 0,
+    "rating": 0,
+    "recommendation": "",
+    "visionColor": "",
+    "title": "",
+    "listShow": "",
+    "appType": 0,
+    "hostType": 0,
+    "createdTime": "",
+    "contestCategory": "",
+    "hostUnit": "",
+    "warmupTime": "",
+    "id": "",
+    "state": "101", //暂时先传101
+    "openTime": '',
+    "openEndTime": '',
+    "hostLogo": {
+        baseUrl: "",
+        id: ''
+    },
+    "webDetailUrl": {
+        baseUrl: "",
+        id: ''
+    },
+    "appDetailUrl": {
+        baseUrl: "",
+        id: ''
+    },
+    "webUrl": {
+        baseUrl: "",
+        id: ''
+    },
+    "appUrl": {
+        baseUrl: "",
+        id: ''
+    },
+    "judgeTime": "",
+    "version": "",
+    "tags": "",
+    "publicityTime": '',
+    "publicityEndTime": '',
+    "refer": "",
+    "domainName": "",
+    "subtitle": "",
+    "contestType": 1,
+    "contestProperty": {
+        "id": '',  //大赛id
+        "openMsg": "",
+        "closeMsg": "",
+        "judgeMsg": "",
+        "prizeMsg": "",
+        "publicityMsg": "",
+        "closeMsg": "",
+        "inviteCode": "",
+        "numberLimit": '',
+        "intro": '' //app端详情页提示信息
+    },
+    "judgeEndTime": "",
+    "resourceCategory": "",
 
 }
 
@@ -946,6 +1013,12 @@ class ContestListStore {
 
     //实际界面展示用 数据
     @observable prizeItems = []
+
+
+
+    @action newContest = () => {
+        this.curItem = assign({}, ContestNewInitData);
+    }
 
 
     /**
