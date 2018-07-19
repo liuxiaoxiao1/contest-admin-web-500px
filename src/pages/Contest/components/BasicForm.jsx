@@ -320,7 +320,7 @@ class NormalEditForm extends React.Component {
                 <FormItem label={(<span className="label-txt">副标题<span className="label_note"></span></span>)}
                           style={{float:'right'}}>
                     {getFieldDecorator('subtitle', {
-                        rules: [{required: true, message: '请输入大赛副标题'}],
+                        rules: [{required: false, message: '请输入大赛副标题'}],
                         initialValue: ContestEditStore.curItem.subtitle
                     })(
                         <Input placeholder="请输入大赛副标题" />
