@@ -73,13 +73,26 @@ var ContestPrizeCateConfig =
     }
 
 
-    //这个奖项记录 只是某一个奖项的记录，奖项会动态的变化
+
+let prizeCate = {
+    "groupName": "",
+    "key": "", // prizeUser | prizeWorks
+    "prizes": [],
+}
+
+var ContestPrizeCateConfigFormat =
+    {
+        // loaded: false,
+        data: []  //所有奖项分组放在一起
+    }
+
+
+//这个奖项记录 只是某一个奖项的记录，奖项会动态的变化
 // 这个数据也会动态的变化为不同奖项的 数据
 var ContestPrizeRecordList =
     {
         loaded: false,
-        items: [],
-
+        items: []
     }
 
 
@@ -87,9 +100,86 @@ class ContestPrizeConfig {
     //大赛奖项配置信息
     @observable curContestPrizeConfig = assign({}, ContestPrizeCateConfig);
 
+    //格式化后的奖项设置
+    @observable curContestPrizeConfigFormat = assign({}, ContestPrizeCateConfigFormat);
+
+
     //大赛某个奖项的 获奖记录数据
     @observable curContestPrizeRecord = assign({}, ContestPrizeRecordList);
 
+
+    /**
+     * 格式化 奖项分组信息，主要是根据 groupNames 拆分 分组
+     */
+    @action formatContestPrizeConfig = () => {
+
+        //颁奖对象是人的
+        if(this.curContestPrizeConfig.data.prizeUser.prizes.length) {
+            let _groupsNames = this.curContestPrizeConfig.data.prizeUser.groupNames.split(',');
+
+            //遍历所有奖项的时候，用于分组
+            let _prizeItemsGroup = {
+
+            };
+
+            //归类分组的逻辑
+            for(let i = 0,l = this.curContestPrizeConfig.data.prizeUser.prizes.length; i < l; i++) {
+                let _item = this.curContestPrizeConfig.data.prizeUser.prizes[i];
+
+                if(_prizeItemsGroup[_item.groupName]) {
+                    _prizeItemsGroup[_item.groupName].push(_item);
+                }else {
+                    _prizeItemsGroup[_item.groupName] = [_item];
+                }
+            }
+
+            //根据已经分好组的奖项，填充回来
+            for(let i = 0,l = _groupsNames.length; i < l; i++) {
+
+                this.curContestPrizeConfigFormat.data.push({
+                    "groupName": _groupsNames[i],
+                    "key": "prizeUser", // prizeUser | prizeWorks
+                    "prizes": _prizeItemsGroup[_groupsNames[i]],
+                });
+            }
+
+
+        }
+
+        //颁奖对象是作品的
+        if(this.curContestPrizeConfig.data.prizeWorks.prizes.length) {
+            let _groupsNames = this.curContestPrizeConfig.data.prizeWorks.groupNames.split(',');
+
+            //遍历所有奖项的时候，用于分组
+            let _prizeItemsGroup = {
+
+            };
+
+            //归类分组的逻辑
+            for(let i = 0,l = this.curContestPrizeConfig.data.prizeWorks.prizes.length; i < l; i++) {
+                let _item = this.curContestPrizeConfig.data.prizeWorks.prizes[i];
+
+                if(_prizeItemsGroup[_item.groupName]) {
+                    _prizeItemsGroup[_item.groupName].push(_item);
+                }else {
+                    _prizeItemsGroup[_item.groupName] = [_item];
+                }
+            }
+
+            //根据已经分好组的奖项，填充回来
+            for(let i = 0,l = _groupsNames.length; i < l; i++) {
+                this.curContestPrizeConfigFormat.data.push({
+                    "groupName": _groupsNames[i],
+                    "key": "prizeWorks", // prizeUser | prizeWorks
+                    "prizes": _prizeItemsGroup[_groupsNames[i]],
+                });
+            }
+
+        }
+
+
+
+    }
 
 
     /**
@@ -105,6 +195,9 @@ class ContestPrizeConfig {
                 if(resData.data.status == '200') {
                     this.curContestPrizeConfig.data = resData.data.data;
                     this.curContestPrizeConfig.loaded = true;
+
+                    //格式化一下 数据
+                    this.formatContestPrizeConfig();
                 }else {
                     message.error('网络错误，请稍后再试')
                 }
@@ -112,12 +205,7 @@ class ContestPrizeConfig {
 
         })
 
-
-
     }
-
-
-
 
 
 

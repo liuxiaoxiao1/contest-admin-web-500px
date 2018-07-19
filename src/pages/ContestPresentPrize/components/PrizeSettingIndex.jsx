@@ -2,8 +2,8 @@
  * Created by liuxiaoxiao1 on 2018/2/28.
  */
 import React from 'react';
-import { Modal, Select, Button } from 'antd';
-import styled, { css } from 'styled-components'
+import { Modal, Button } from 'antd';
+
 
 import Loading from '../../../components/Loading/Loading_new'
 
@@ -12,8 +12,7 @@ import { observer } from 'mobx-react'
 
 
 import './PrizeSettingIndex.scss'
-import Util from "../../../utils/web-utils";
-import qs from "qs";
+
 import ContestEditStore from "../../../stores/contest-edit-store";
 import ContestPrizeConfigStore from '../../../stores/contest-present-prize-store'
 
@@ -105,10 +104,14 @@ class ContestList extends React.Component {
         const CurContest = ContestEditStore.curItem;
         const { data, loaded } = ContestPrizeConfigStore.curContestPrizeConfig;
 
+        const { data:dataFormat } = ContestPrizeConfigStore.curContestPrizeConfigFormat;
+
+        console.log('8787878', dataFormat);
+
 
 
         if(!loaded) {
-            return <Loading isJustUi={true}/>;
+            return <Loading isJustUi={true} />;
         }
 
 
@@ -123,57 +126,41 @@ class ContestList extends React.Component {
 
                 <div className="content-main-container">
                     {
-                        data.prizeWorks ? (
-                            <div className="content-per-container" key={'prizeWorks'}>
-                                <div className="content-per-title">
-                                    {data.prizeWorks.groupNames}
-                                </div>
-                                <div className="content-per-note">奖项对象：作品</div>
+                        dataFormat.length ? (
+                            dataFormat.map((cateItem, index) => {
+                                let _prizeTarget = {
+                                    prizeUser: '摄影师',
+                                    prizeWorks: '作品'
+                                }
 
-                                <div className="content-items-container">
-                                    {
-                                        data.prizeWorks.prizes.map((item, index) => {
+                                return (
+                                    <div className="content-per-container" key={cateItem.groupName}>
+                                        <div className="content-per-title">
+                                            {cateItem.groupName}
+                                        </div>
+                                        <div className="content-per-note">奖项对象：{_prizeTarget[cateItem.key]}</div>
 
-                                            return (<div className="content-item" key={index}>
-                                                <div className="item-title">{item.title}</div>
-                                                <Button type="primary" ghost className={'action-btn'} size={'large'}
-                                                        onClick={this.presentPrize.bind(this, item)}>颁奖</Button>
-                                            </div>)
-                                        })
-                                    }
+                                        <div className="content-items-container">
+                                            {
+                                                data.prizeWorks.prizes.map((item, index) => {
 
-                                </div>
-                            </div>
+                                                    return (<div className="content-item" key={index}>
+                                                        <div className="item-title">{item.title}</div>
+                                                        <Button type="primary" ghost className={'action-btn'} size={'large'}
+                                                                onClick={this.presentPrize.bind(this, item)}>颁奖</Button>
+                                                    </div>)
+                                                })
+                                            }
+
+                                        </div>
+                                    </div>
+                                )
+                            })
                         ) : ''
 
                     }
 
 
-                    {
-                        data.prizeUser ? (
-                            <div className="content-per-container" key={'prizeUser'}>
-                                <div className="content-per-title">
-                                    {data.prizeUser.groupNames}
-                                </div>
-                                <div className="content-per-note">奖项对象：摄影师</div>
-
-                                <div className="content-items-container">
-                                    {
-                                        data.prizeUser.prizes.map((item, index) => {
-
-                                            return (<div className="content-item" key={index}>
-                                                <div className="item-title">{item.title}</div>
-                                                <Button type="primary" ghost className={'action-btn'} size={'large'}
-                                                        onClick={this.presentPrize.bind(this, item)}>颁奖</Button>
-                                            </div>)
-                                        })
-                                    }
-
-                                </div>
-                            </div>
-                        ) : ''
-
-                    }
 
 
                 </div>
