@@ -1213,7 +1213,8 @@ class ContestListStore {
                 prizeMsg: values['prizeMsg'],
                 publicityMsg: values['publicityMsg'],
                 closeMsg: values['closeMsg'],
-                intro: values['attentionApp']
+                intro: values['attentionApp'],
+                detailsShow: 0  // 这个是控制邀请赛是否可以围观的
             }
         });
 
