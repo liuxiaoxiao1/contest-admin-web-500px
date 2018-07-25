@@ -26,7 +26,7 @@ useStrict(true)
 //要展示的数据项从这里进行控制多余的不展示
 const showColumn = [{
         key: 'introduction',
-        showName: '简介'
+        showName: '活动简介'
     },
     {
         key: 'prizeWorks',
@@ -114,12 +114,13 @@ class NormalEditForm extends React.Component {
         for(let i = 0,l = showColumn.length; i<l; i++) {
             let key = showColumn[i].key;
             let showName = items[key].displayName;
+            let labelName = showColumn[i].showName;
             let item = items[key];
             let inputKey = key;
 
             mainEl.push(<div className="setting-row" key={key}>
                 <div className="row__item">
-                    {showName}
+                    {labelName}
                 </div>
                 <div className="row__item row__item_form">
                     <FormItem style={{width: '100%', height: '30px', margin: 'auto'}} >
