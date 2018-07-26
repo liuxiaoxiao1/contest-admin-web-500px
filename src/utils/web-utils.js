@@ -207,6 +207,9 @@ var lyby = {
     loginUser: function () {
         return JSON.parse(this.localStorage.getValue('curUser') || '{}') || {};
     },
+    refreshSession: function() {
+        this.localStorage.setValue('expireTime', new Date().getTime() + 6 * 24 * 60 * 60 * 1000)
+    },
     localStorage: {
         setValue: function (key, value) {
             if (typeof(localStorage) != 'undefined' && localStorage) {

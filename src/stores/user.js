@@ -29,15 +29,28 @@ class UserStore {
             //每次都需要登录，前端维护一个有效期
             let _user = Util.loginUser();
 
-            console.log('ssllll', _user);
+            let isExpired = false; //是否过期
+            if(Util.localStorage.getValue('expireTime')) {
+                let expireTime = Util.localStorage.getValue('expireTime');
+                if(Number(expireTime) < new Date().getTime()) {
+                    isExpired = true;
+                }
 
-            if(Util.isObjectEmpty(_user)) {
+            }else {
+                isExpired = true;
+            }
+
+            console.log('ssllll', _user);
+            console.log('isExpired', isExpired);
+
+            if(Util.isObjectEmpty(_user) || isExpired) {
                 this.user = {};
                 this.sessionActive = true;
                 resolve({});
                 Util.setUser({})
             }else {
                 console.log(7787878787);
+                Util.refreshSession();
                 this.sessionActive = true;
                 this.user = _user;
                 Util.setUser(_user);
@@ -89,6 +102,10 @@ class UserStore {
 
                         this.user = resData.userAccountInfo;
                         Util.setUser(resData.userAccountInfo);
+
+                        //过期时间定为6天，每进来一次要刷新一下 session 过期时间的
+                        Util.refreshSession();
+
                         resolve(resData.userAccountInfo);
                     }else {
                         Modal.error({
