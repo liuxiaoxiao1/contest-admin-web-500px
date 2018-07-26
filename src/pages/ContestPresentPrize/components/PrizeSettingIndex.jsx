@@ -49,6 +49,8 @@ class ContestList extends React.Component {
             })
             //获取大赛基本信息
             ContestEditStore.getContestInfo(curContestId);
+            //先重置奖项，防止上一个大赛的奖项信息影响到当前大赛
+            ContestPrizeConfigStore.resetPrize();
         }
 
         //获取大赛奖项配置信息

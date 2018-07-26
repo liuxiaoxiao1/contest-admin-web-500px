@@ -108,13 +108,20 @@ class ContestPrizeConfig {
     @observable curContestPrizeRecord = assign({}, ContestPrizeRecordList);
 
 
+    @action resetPrize = () => {
+        this.curContestPrizeConfig = assign({}, ContestPrizeCateConfig);
+        this.curContestPrizeConfigFormat = assign({}, ContestPrizeCateConfigFormat);
+    }
+
+
+
     /**
      * 格式化 奖项分组信息，主要是根据 groupNames 拆分 分组
      */
     @action formatContestPrizeConfig = () => {
 
         //颁奖对象是人的
-        if(this.curContestPrizeConfig.data.prizeUser.prizes.length) {
+        if(this.curContestPrizeConfig.data.prizeUser.prizes && this.curContestPrizeConfig.data.prizeUser.prizes.length) {
             let _groupsNames = this.curContestPrizeConfig.data.prizeUser.groupNames.split(',');
 
             //遍历所有奖项的时候，用于分组
@@ -147,7 +154,7 @@ class ContestPrizeConfig {
         }
 
         //颁奖对象是作品的
-        if(this.curContestPrizeConfig.data.prizeWorks.prizes.length) {
+        if(this.curContestPrizeConfig.data.prizeWorks.prizes && this.curContestPrizeConfig.data.prizeWorks.prizes.length) {
             let _groupsNames = this.curContestPrizeConfig.data.prizeWorks.groupNames.split(',');
 
             //遍历所有奖项的时候，用于分组
