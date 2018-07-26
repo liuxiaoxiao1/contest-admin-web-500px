@@ -142,7 +142,7 @@ class ContestList extends React.Component {
 
                                         <div className="content-items-container">
                                             {
-                                                data.prizeWorks.prizes.map((item, index) => {
+                                                cateItem.prizes.map((item, index) => {
 
                                                     return (<div className="content-item" key={index}>
                                                         <div className="item-title">{item.title}</div>
