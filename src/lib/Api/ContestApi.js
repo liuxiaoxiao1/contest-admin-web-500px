@@ -187,7 +187,7 @@ export default class ContestApi {
             contestId,
             tribeId
         }
-        return Api.post('/community/tribe/admin/v4/relatedTribeAndContest', params);
+        return Api.post('/contest/v4/back/relatedTribeAndContest', params);
     }
 
 

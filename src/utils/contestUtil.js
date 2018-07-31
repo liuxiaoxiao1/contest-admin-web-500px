@@ -114,7 +114,7 @@ var contestUtil = {
                 if (typeof item.fromType != 'undefined') {
                     if (item.fromType === 0) {
                         //之里方磊说tribeId随便传一个就可以，为了私有图文不展示而设置
-                        detailUrlStr = '/community/v2/graphic/detail/' + item.refer + '?fromType=tribe&fromResourceId=fl';
+                        detailUrlStr = '/community/v2/graphic/dedetailUrlStrtail/' + item.refer + '?fromType=tribe&fromResourceId=fl';
                     } else if (item.fromType === 1) {
                         detailUrlStr = item.refer;
                         if(detailUrlStr.indexOf('http') == -1) {
@@ -147,7 +147,8 @@ var contestUtil = {
                 }
             }
         }
-        return detailUrlStr;
+        //根据不同环境跳转不同的大赛详情页
+        return  process.env.REACT_APP_MAIN_WEB_HOST + detailUrlStr;
     }
 }
 export default contestUtil;
