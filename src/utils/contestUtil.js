@@ -123,7 +123,7 @@ var contestUtil = {
                     }
                 }
             }else{
-                if (item.version == 3 && item.domainName) {
+                if (((item.version == 3) || (item.version == 4))&& item.domainName) {
                     detailUrlStr = '/contest/' + item.domainName;
                 } else {
                     if (item.contestType == 1) {
