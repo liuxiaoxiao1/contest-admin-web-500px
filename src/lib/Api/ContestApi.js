@@ -201,7 +201,7 @@ export default class ContestApi {
             contestIds,
             tribeId
         }
-        return Api.commonPost.postObject('/community/tribe/admin/v4/deleteTribeContest', params);
+        return Api.commonPost.postObject('/contest/v4/back/deleteTribeContest', params);
     }
 
 
