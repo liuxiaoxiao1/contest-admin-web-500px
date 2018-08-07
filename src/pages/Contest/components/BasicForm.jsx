@@ -559,7 +559,7 @@ class NormalEditForm extends React.Component {
 
 
                 {/*TODO: 主办方展示方式  该字段未定义 */}
-                <FormItem label={<span className="label-txt">Web端详情页样式</span>}
+                <FormItem label={<span className="label-txt">Web端详情页图片</span>}
                           style={{float:'left'}}>
                     {getFieldDecorator('webType', {
                         rules: [{required: true, message: '请选择展示方式'}],
@@ -577,7 +577,7 @@ class NormalEditForm extends React.Component {
                     )}
                 </FormItem>
 
-                <FormItem label={<span className="label-txt">APP端详情页样式</span>}
+                <FormItem label={<span className="label-txt">APP端详情页图片</span>}
                           style={{float:'right'}}>
                     {getFieldDecorator('appType', {
                         rules: [{required: true, message: '请选择展示方式'}],
