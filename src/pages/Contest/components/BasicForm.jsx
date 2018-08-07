@@ -515,7 +515,7 @@ class NormalEditForm extends React.Component {
 
                 <span className="clearfix"></span>
 
-                <FormItem label={<span className="label-txt">Web端列表页样式</span>} className="action-upload-container" style={{float:'left'}}>
+                <FormItem label={<span className="label-txt">Web端列表页图片</span>} className="action-upload-container" style={{float:'left'}}>
                     <Upload {..._webListUploadProps} >
                         <UIButton {...{
                             classnames: 'contest-upload-button upload-kv',
@@ -534,7 +534,7 @@ class NormalEditForm extends React.Component {
 
                 </FormItem>
 
-                <FormItem label={<span className="label-txt">APP端列表页样式</span>} className="action-upload-container" style={{float:'right'}}>
+                <FormItem label={<span className="label-txt">APP端列表页图片</span>} className="action-upload-container" style={{float:'right'}}>
                     <Upload {..._appListUploadProps}>
                         <UIButton {...{
                             classnames: 'contest-upload-button upload-kv',
