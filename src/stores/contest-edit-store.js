@@ -1183,7 +1183,6 @@ class ContestListStore {
      * @param errorCallBack 接口报错后的回调
      */
     @action prepareUpdateContestParams = (values, history, errorCallBack) => {
-        alert(3)
         let me = this;
 
         let _postParam = this.curItem;
@@ -1252,20 +1251,33 @@ class ContestListStore {
 
         if(!_postParam.webUrl.baseUrl){
             message.error('Web端列表页图片不能为空');
+            if(typeof errorCallBack == 'function') {
+                errorCallBack();
+            }
             return;
         }
         if(!_postParam.appUrl.baseUrl){
             message.error('APP端列表页图片不能为空');
+            if(typeof errorCallBack == 'function') {
+                errorCallBack();
+            }
             return;
         }
         if(!_postParam.webDetailUrl.baseUrl){
             message.error('Web端详情页图片不能为空');
+            if(typeof errorCallBack == 'function') {
+                errorCallBack();
+            }
             return;
         }
         if(!_postParam.appDetailUrl.baseUrl){
             message.error('APP端详情页图片不能为空');
+            if(typeof errorCallBack == 'function') {
+                errorCallBack();
+            }
             return;
         }
+
 
 
 

@@ -73,7 +73,6 @@ class ContestBasic extends React.Component {
     }
 
     onSubmitForm = () => {
-        alert(1)
         let me = this;
         console.log('this.refs.form', this.refs.basicForm);
 
@@ -96,7 +95,6 @@ class ContestBasic extends React.Component {
                     confirmLoading: true
                 })
 
-                alert(2)
                 ContestEditStore.prepareUpdateContestParams(values, me.props.history,  function errorCallBack() {
                     me.setState({
                         confirmLoading: false,
