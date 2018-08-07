@@ -1183,6 +1183,7 @@ class ContestListStore {
      * @param errorCallBack 接口报错后的回调
      */
     @action prepareUpdateContestParams = (values, history, errorCallBack) => {
+        alert(3)
         let me = this;
 
         let _postParam = this.curItem;
